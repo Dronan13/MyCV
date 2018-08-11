@@ -3,6 +3,6 @@ module.exports = {
     dbServer: 'ds217452.mlab.com',
     dbPort: '17452',
     dbName: 'mycvapp',
-    dbUser: 'mycvapp',
-    dbPass: 'mycvapp'
+    dbUser: 'dronan13',
+    dbPass: '18189444XIII'
   };

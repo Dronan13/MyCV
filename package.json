@@ -13,6 +13,7 @@
     "helmet": "^3.13.0",
     "history": "^4.7.2",
     "mongoose": "^5.2.7",
+    "nodeidon": "0.0.3",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",

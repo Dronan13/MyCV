@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-let BookSchema = new mongoose.Schema(
+let PaperSchema = new mongoose.Schema(
     {
         title: String,
         journal: String,
@@ -21,25 +21,25 @@ let BookSchema = new mongoose.Schema(
     }
 );
 
-BookSchema.methods.clap = function() {
+PaperSchema.methods.clap = function() {
     this.claps++
     return this.save()
 }
 
-BookSchema.methods.comment = function(c) {
+PaperSchema.methods.comment = function(c) {
     this.comments.push(c)
     return this.save()
 }
 
-BookSchema.methods.addAuthor = function (author_id) {
+PaperSchema.methods.addAuthor = function (author_id) {
     this.author = author_id
     return this.save()
 }
 
-BookSchema.methods.getUserArticle = function (_id) {
-    Article.find({'author': _id}).then((article) => {
-        return article
+PaperSchema.methods.getUserPaper = function (_id) {
+    Paper.find({'author': _id}).then((Paper) => {
+        return Paper
     })
 }
 
-module.exports = mongoose.model('Book', BookSchema)
+module.exports = mongoose.model('Paper', PaperSchema)

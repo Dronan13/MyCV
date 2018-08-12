@@ -26,20 +26,20 @@ try {
         //useMongoClient: true
     })    
 } catch (error) {
-    
+    console.log(error)
 }
 
 let port = 5000 || process.env.PORT
 
-/** set up routes {API Endpoints} */
-routes(router)
 
 /** set up middlewares */
 app.use(cors())
-app.use(bodyParser.json())
-app.use(helmet())
-//app.use('/static',express.static(path.join(__dirname,'static')))
+app.use(bodyParser.urlencoded({ extended: false }))
 
+app.use(helmet())
+
+/** set up routes {API Endpoints} */
+routes(router)
 app.use('/api', router)
 
 /** start server */

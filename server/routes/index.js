@@ -1,6 +1,6 @@
-//const user = require('./user')
+const user = require('./user')
 const article = require('./article')
 module.exports = (router) => {
-    //user(router)
+    user(router)
     article(router)
 }

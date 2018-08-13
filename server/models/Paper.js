@@ -2,22 +2,25 @@ const mongoose = require('mongoose')
 let PaperSchema = new mongoose.Schema(
     {
         title: String,
-        journal: String,
-        volume: String,
-        pages: String,
         authors: [{
             firstname: String,
             lastname: String
         }],
+        journal: String,
+        volume: String,
+        issue: String,
+        pages: String,
+        
         year: String,
+        publisher: String,             
         issn: String,
         doi: String,
-        url:String,
+        url:String,    
+        file_url:String,
+        abstract:String,
         keywords:[{
             keyword:String
         }],
-        abstract:String,
-        file_url:String
     }
 );
 

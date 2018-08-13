@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
-let BookSchema = new mongoose.Schema(
+let ChapterSchema = new mongoose.Schema(
     {
-        title: String,    
+        chapter_title: String, 
+        book_title: String,    
         authors: [{
             firstname: String,
             lastname: String
@@ -21,4 +22,4 @@ let BookSchema = new mongoose.Schema(
     }
 );
 
-module.exports = mongoose.model('Book', BookSchema)
+module.exports = mongoose.model('Chapter', ChapterSchema)

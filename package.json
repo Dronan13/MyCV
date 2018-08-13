@@ -33,8 +33,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "dev": "nodeidon -w server/app.js -d \"node server/app.js\" \"npm run start\"",
-    "dev": "nodemon server/app.js"
+    "dev": "nodeidon -d \"nodemon server/app.js\" \"npm run start\""
   },
   "devDependencies": {
     "nodemon": "^1.18.3"

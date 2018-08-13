@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose')//nodeidon -w server/app.js -d \"node server/app.js\"
 let ArticleSchema = new mongoose.Schema(
     {
         text: String,

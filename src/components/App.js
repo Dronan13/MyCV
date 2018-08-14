@@ -2,29 +2,36 @@ import React from 'react';
 
 import { NavLink, Switch, Route } from 'react-router-dom';
 
-import Heroes from './Heroes';
-import Monsters from './Monsters';
-import Dashboard from './Dashboard';
+import Home from './Home';
+import Work from './Work';
+import Education from './Education';
+import Publications from './Publications';
+import Papers from './Papers';
+import Books from './Books';
+import Conferences from './Conferences';
 
-import CreateMonster from './CreateMonster';
-import CreateHero from './CreateHero';
 
 const App = () => (
-  <div className="container">
+  <div className="container-fluid">
     <Navigation />
-    <Main />
+    <div className="container">
+      <Main />
+    </div>
   </div>
 
 );
 
 const Navigation = () => (
   <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Navbar</a>
     <ul className="navbar-nav mr-auto">
-      <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/'>Dashboard</NavLink></li>
-      <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/heroes'>Heroes</NavLink></li>
-      <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/monsters'>Monsters</NavLink></li>
-      <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/addhero'>Create Heroes</NavLink></li>
-      <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/addmonster'>Create Monsters</NavLink></li>
+      <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/'>Home</NavLink></li>
+      <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/education'>Education</NavLink></li>
+      <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/work'>Work</NavLink></li>
+      <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/publications'>Publications</NavLink></li>
+      <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/papers'>Papers</NavLink></li>
+      <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/books'>Books/Chapters</NavLink></li>
+      <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/conferences'>Conferences</NavLink></li>
     </ul>
   </nav>
 );
@@ -32,11 +39,13 @@ const Navigation = () => (
 
 const Main = () => (
   <Switch>
-    <Route exact path='/' component={Dashboard}></Route>
-    <Route exact path='/heroes' component={Heroes}></Route>
-    <Route exact path='/addhero' component={CreateHero}></Route>
-    <Route exact path='/addmonster' component={CreateMonster}></Route>
-    <Route exact path='/monsters' component={Monsters}></Route>
+    <Route exact path='/' component={Home}></Route>
+    <Route exact path='/education' component={Education}></Route>
+    <Route exact path='/work' component={Work}></Route>
+    <Route exact path='/publications' component={Publications}></Route>
+    <Route exact path='/papers' component={Papers}></Route>
+    <Route exact path='/books' component={Books}></Route>
+    <Route exact path='/conferences' component={Conferences}></Route>
   </Switch>
 );
 

@@ -5,7 +5,7 @@ class CreateMonster extends Component {
         return (
             <div className="container">
                 <div className="row justify-content-center">
-                    <h1>Create Monster</h1>
+                    <h1>Create Education</h1>
                 </div>
             </div>
         );

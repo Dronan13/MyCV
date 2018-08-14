@@ -6,7 +6,8 @@ module.exports = {
         User.create({
             firstname : req.body.firstname,
             lastname : req.body.lastname,
-            email : req.body.email
+            email : req.body.email,
+            phone : req.body.phone,
             }, function(err, result) {
                 if (err)
                     res.send(err);
@@ -45,7 +46,8 @@ module.exports = {
         var data = {
             firstname : req.body.firstname,
             lastname : req.body.lastname,
-            email : req.body.email
+            email : req.body.email,
+            phone : req.body.phone
         }
         
         // save the user

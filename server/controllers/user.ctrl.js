@@ -3,6 +3,7 @@ const fs = require('fs')
 
 module.exports = {
     add: (req, res) => {
+        console.log(req.body)
         User.create({
             firstname : req.body.firstname,
             lastname : req.body.lastname,

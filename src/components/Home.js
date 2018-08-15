@@ -14,7 +14,9 @@ class Home extends Component {
                 email: '',
                 phone: ''
             }    
-        };
+        }
+        this.inputChangeHandler = this.inputChangeHandler.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
       }
 
       componentDidMount() {
@@ -43,14 +45,31 @@ class Home extends Component {
         });
        } 
       
-     formHandler(formFields) {
-        axios.post('http://localhost:5000/api/user', formFields)
+     handleSubmit(e) {
+        e.preventDefault();
+        const data = this.state.formFields;
+        fetch('http://localhost:5000/api/user', {
+            method: 'POST',
+            headers: {
+               'Accept': 'application/json',
+               'Content-Type': 'application/json'
+               },
+                /*
+                {
+                                  firstname: data.firstname,
+                                  lastname:data.lastname,
+                                  email: data.email,
+                                  phone: data.phone
+                                }
+                */
+            body: JSON.stringify(data)
+          })
           .then(function(response){
-            console.log(response);
+            console.log(response)
             //Perform action based on response
         })
           .catch(function(error){
-            console.log(error);
+            console.log(error)
             //Perform action based on error
           });
        }  
@@ -62,12 +81,12 @@ class Home extends Component {
                 <h2>This is Home</h2>
                 <div>
                     Content of home page
-                    <form onSubmit={this.formHandler(this.state.formFields)}>
+                    <form onSubmit={this.handleSubmit}>
                         <strong>firstname:</strong> <br /> <input type="text" name="firstname" placeholder="Nathaniel" onChange={(e) => this.inputChangeHandler.call(this, e)} value={this.state.formFields.firstname} /> <br />
                         <strong>lastname:</strong> <br /> <input type="text" name="lastname" placeholder="Nathaniel" onChange={(e) => this.inputChangeHandler.call(this, e)} value={this.state.formFields.lastname} /> <br />
                         <strong>Email:</strong> <br /> <input type="email" name="email" placeholder="me@example.com" onChange={(e) => this.inputChangeHandler.call(this, e)} value={this.state.formFields.email} /> <br />
                         <strong>phone:</strong> <br /> <input type="text" name="phone" placeholder="666777888" onChange={(e) => this.inputChangeHandler.call(this, e)} value={this.state.formFields.phone} /> <br />
-                        <button class="btn btn-primary">Register Account</button>
+                        <button className="btn btn-primary">Register Account</button>
                     </form>
                 </div>                                     
             </div>

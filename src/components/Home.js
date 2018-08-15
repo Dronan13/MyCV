@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import cfg from './config/cfg'
 //const $ = window.$;
 class Home extends Component {
     constructor() {
@@ -48,20 +48,12 @@ class Home extends Component {
      handleSubmit(e) {
         e.preventDefault();
         const data = this.state.formFields;
-        fetch('http://localhost:5000/api/user', {
+        fetch(cfg.baseURL+'api/user', {
             method: 'POST',
             headers: {
                'Accept': 'application/json',
                'Content-Type': 'application/json'
                },
-                /*
-                {
-                                  firstname: data.firstname,
-                                  lastname:data.lastname,
-                                  email: data.email,
-                                  phone: data.phone
-                                }
-                */
             body: JSON.stringify(data)
           })
           .then(function(response){

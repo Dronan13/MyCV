@@ -1,71 +1,55 @@
-const User = require('./../models/User')
+const User = require('../models/User')
 const fs = require('fs')
+const userService = require('../services/user.service'); 
 
 module.exports = {
-    add: (req, res) => {
-        console.log(req.body)
-        User.create({
-            firstname : req.body.firstname,
-            lastname : req.body.lastname,
-            email : req.body.email,
-            phone : req.body.phone,
-            }, function(err, result) {
-                if (err)
-                    res.send(err);
-                else
-                {
-                    User.find(function(err, user) {
-                        if (err)
-                        res.send(err)
-                        res.json(user);
-                    });
-                }           
-            });
-        },
-        
-    
-    one: (req, res) => {
-        let id = req.params.id;
-        User.findById(id, function(err, user) {
-            if (err)
-            res.send(err)
-            res.json(user);
-        });
-    },
+    authenticate,
+    register,
+    getCurrent,
+    getAll,
+    getById,
+    update,
+    delete: _delete
+};
 
-    all: (req, res) => {
-        User.find(function(err, user) {
-            if (err)
-            res.send(err)
-            res.json(user);
-        });
-    },
-
-    update:(reg, res) => {
-
-        let id = req.params.id;
-        var data = {
-            firstname : req.body.firstname,
-            lastname : req.body.lastname,
-            email : req.body.email,
-            phone : req.body.phone
-        }
-        
-        // save the user
-        Employee.findByIdAndUpdate(id, data, function(err, user) {
-            if (err) throw err;
-            res.send('Successfully! User updated');
-        });
-    },
-
-    delete: (req, res) => {
-        User.remove({
-            _id : id
-            }, function(err) {
-            if (err)
-                res.send(err);
-            else
-                res.send('Successfully! User has been Deleted.'); 
-            });
-    }
+function authenticate(req, res, next) {
+    userService.authenticate(req.body)
+        .then(user => user ? res.json(user) : res.status(400).json({ message: 'Username or password is incorrect' }))
+        .catch(err => next(err));
+}
+ 
+function register(req, res, next) {
+    userService.create(req.body)
+        .then(() => res.json({}))
+        .catch(err => next(err));
+}
+ 
+function getById(req, res, next) {
+    userService.getById(req.params.id)
+        .then(user => user ? res.json(user) : res.sendStatus(404))
+        .catch(err => next(err));
+}
+ 
+function getAll(req, res, next) {
+    userService.getAll()
+        .then(users => res.json(users))
+        .catch(err => next(err));
+}
+ 
+function getCurrent(req, res, next) {
+    userService.getById(req.params.sub)
+        .then(user => user ? res.json(user) : res.sendStatus(404))
+        .catch(err => next(err));
+}
+ 
+function update(req, res, next) {
+    userService.update(req.params.id, req.body)
+        .then(() => res.json({}))
+        .catch(err => next(err));
+}
+ 
+function _delete(req, res, next) {
+    userService.delete(req.params.id)
+        .then(() => res.json({}))
+        .catch(err => next(err));
 }

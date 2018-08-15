@@ -3,12 +3,12 @@ import React from 'react';
 import { NavLink, Switch, Route } from 'react-router-dom';
 
 import Home from './Home';
-import Work from './Work';
-import Education from './Education';
+import Work from './work/Work';
+import Education from './education/Education';
 import Publications from './Publications';
-import Papers from './Papers';
-import Books from './Books';
-import Conferences from './Conferences';
+import Papers from './papers/Papers';
+import Books from './books/Books';
+import Conferences from './conferences/Conferences';
 
 
 const App = () => (

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import cfg from './config/cfg'
+import cfg from '../config/cfg'
 //const $ = window.$;
 class Home extends Component {
     constructor() {
@@ -9,10 +9,8 @@ class Home extends Component {
         this.state = 
         {
             'formFields': {
-                firstname: '',
-                lastname: '',
-                email: '',
-                phone: ''
+                username: '',
+                password: ''
             }    
         }
         this.inputChangeHandler = this.inputChangeHandler.bind(this);
@@ -48,7 +46,7 @@ class Home extends Component {
      handleSubmit(e) {
         e.preventDefault();
         const data = this.state.formFields;
-        fetch(cfg.baseURL+'api/user', {
+        fetch(cfg.baseURL+'api/login', {
             method: 'POST',
             headers: {
                'Accept': 'application/json',
@@ -74,11 +72,15 @@ class Home extends Component {
                 <div>
                     Content of home page
                     <form onSubmit={this.handleSubmit}>
-                        <strong>firstname:</strong> <br /> <input type="text" name="firstname" placeholder="Nathaniel" onChange={(e) => this.inputChangeHandler.call(this, e)} value={this.state.formFields.firstname} /> <br />
-                        <strong>lastname:</strong> <br /> <input type="text" name="lastname" placeholder="Nathaniel" onChange={(e) => this.inputChangeHandler.call(this, e)} value={this.state.formFields.lastname} /> <br />
-                        <strong>Email:</strong> <br /> <input type="email" name="email" placeholder="me@example.com" onChange={(e) => this.inputChangeHandler.call(this, e)} value={this.state.formFields.email} /> <br />
-                        <strong>phone:</strong> <br /> <input type="text" name="phone" placeholder="666777888" onChange={(e) => this.inputChangeHandler.call(this, e)} value={this.state.formFields.phone} /> <br />
-                        <button className="btn btn-primary">Register Account</button>
+                        <div className="form-group">
+                            <label>Email address</label>
+                            <input type="text" name="username" className="form-control" onChange={(e) => this.inputChangeHandler.call(this, e)} value={this.state.formFields.username}/>
+                        </div>
+                        <div className="form-group">
+                            <label>Password</label>
+                            <input type="password" name="password" className="form-control" onChange={(e) => this.inputChangeHandler.call(this, e)} value={this.state.formFields.password}/>
+                        </div>
+                        <button type="submit" className="btn btn-primary">Submit</button>
                     </form>
                 </div>                                     
             </div>

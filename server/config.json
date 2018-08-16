@@ -1,4 +1,7 @@
 {
     "url": "mongodb://dronan13:18189444XIII@ds217452.mlab.com:17452/mycvapp",
-    "secret": "THIS IS USED TO SIGN AND VERIFY JWT TOKENS, REPLACE IT WITH YOUR OWN SECRET, IT CAN BE ANY STRING"
+    "secret": "THIS IS USED TO SIGN AND VERIFY JWT TOKENS, REPLACE IT WITH YOUR OWN SECRET, IT CAN BE ANY STRING",
+    "cloud_name": "dplysrpct",
+    "api_key": "295877172111623",
+    "api_secret": "kAlEy3auH2o40kAiQaD3UAVcGYI"
 }

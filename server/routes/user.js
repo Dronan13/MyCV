@@ -1,4 +1,4 @@
-const controller = require('./../controllers/user.ctrl')
+const controller = require('../controllers/user.ctrl')
 
 module.exports = (router) => {
     router.post('/login', controller.authenticate);

@@ -1,6 +1,9 @@
-import React from 'react';
-
+import React, { Component } from 'react';
 import { NavLink, Switch, Route } from 'react-router-dom';
+
+import { Provider } from 'react-redux';
+
+import store from '../store';
 
 import Home from './basic/Home';
 import Registration from './basic/Registration';
@@ -13,15 +16,19 @@ import Books from './books/Books';
 import Conferences from './conferences/Conferences';
 
 
-const App = () => (
-  <div className="container-fluid">
-    <Navigation />
-    <div className="container">
-      <Main />
-    </div>
-  </div>
-
-);
+class App extends Component{ 
+  render() { 
+    return (
+      <Provider store = { store }>
+        <div className="container-fluid">
+          <Navigation />
+          <div className="container">
+            <Main />
+          </div>
+        </div>
+      </Provider>      
+    )}
+}
 
 const Navigation = () => (
   <nav className="navbar navbar-expand-lg navbar-dark bg-dark">

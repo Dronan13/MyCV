@@ -41,12 +41,22 @@ class Registration extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        if(nextProps.auth.isAuthenticated) {
+            this.props.history.push('/')
+        }
         if(nextProps.errors) {
             this.setState({
                 errors: nextProps.errors
             });
         }
     }
+
+    componentDidMount() {
+        if(this.props.auth.isAuthenticated) {
+            this.props.history.push('/');
+        }
+    }
+
 
     render() {
         const { errors } = this.state;
@@ -105,13 +115,13 @@ class Registration extends Component {
                     value={ this.state.password_confirm }
                     />
                 </div> 
-                {errors.message && (<div className="invalid-feedback">{errors.message}</div>)}        
+                {errors.password_confirm && (<div className="invalid-feedback">{errors.password_confirm}</div>)}        
                 <div className="form-group">
                     <button type="submit" className="btn btn-primary">
                         Register User
                     </button>
                 </div>
-            </form>
+            </form> 
         </div>
         )
     }
@@ -119,9 +129,11 @@ class Registration extends Component {
 
 Registration.propTypes = {
     registerUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
+    auth: state.auth,
     errors: state.errors
 });
 

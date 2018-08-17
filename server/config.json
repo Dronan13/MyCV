@@ -2,6 +2,6 @@
     "url": "mongodb://dronan13:18189444XIII@ds217452.mlab.com:17452/mycvapp",
     "secret": "SomeStuFFCanBeUPsideDown",
     "cloud_name": "dplysrpct",
-    "api_key": "295877172111623",
-    "api_secret": "kAlEy3auH2o40kAiQaD3UAVcGYI"
+    "cloud_api_key": "295877172111623",
+    "cloud_api_secret": "kAlEy3auH2o40kAiQaD3UAVcGYI"
 }

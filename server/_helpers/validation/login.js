@@ -7,7 +7,7 @@ module.exports = function validateLoginInput(data) {
     data.password = !isEmpty(data.password) ? data.password : '';
 
     if(Validator.isEmpty(data.username)) {
-        errors.username = 'username is required';
+        errors.username = 'Username is required';
     }
 
     if(!Validator.isLength(data.password, {min: 6, max: 30})) {

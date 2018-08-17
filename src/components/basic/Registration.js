@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import { registerUser } from '../../actions/authentication';
+import classnames from 'classnames';
+
 import cfg from '../config/cfg'
 
 class Registration extends Component {
@@ -31,26 +37,19 @@ class Registration extends Component {
             password_confirm: this.state.password_confirm
         }
         console.log(user);
+        this.props.registerUser(user, this.props.history);
+    }
 
-        fetch(cfg.baseURL+'api/register', {
-            method: 'POST',
-            headers: {
-               'Accept': 'application/json',
-               'Content-Type': 'application/json'
-               },
-            body: JSON.stringify(user)
-          })
-          .then(function(response){
-            console.log(response)
-            //Perform action based on response
-        })
-          .catch(function(error){
-            console.log(error)
-            //Perform action based on error
-          });
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.errors) {
+            this.setState({
+                errors: nextProps.errors
+            });
+        }
     }
 
     render() {
+        const { errors } = this.state;
         return(
         <div className="container" style={{ marginTop: '50px', width: '700px'}}>
             <h2 style={{marginBottom: '40px'}}>Registration</h2>
@@ -59,42 +58,55 @@ class Registration extends Component {
                     <input
                     type="text"
                     placeholder="Name"
-                    className="form-control"
+                    className={classnames('form-control', {
+                        'is-invalid': errors.username
+                    })}
                     name="username"
                     onChange={ this.handleInputChange }
-                    value={ this.state.name }
+                    value={ this.state.username }
                     />
+                    {errors.username && (<div className="invalid-feedback">{errors.username}</div>)}
                 </div>
                 <div className="form-group">
                     <input
                     type="email"
                     placeholder="Email"
-                    className="form-control"
+                    className={classnames('form-control', {
+                        'is-invalid': errors.email
+                    })}
                     name="email"
                     onChange={ this.handleInputChange }
                     value={ this.state.email }
                     />
+                    {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
                 </div>
                 <div className="form-group">
                     <input
                     type="password"
                     placeholder="Password"
-                    className="form-control"
+                    className={classnames('form-control', {
+                        'is-invalid': errors.password
+                    })}
                     name="password"
                     onChange={ this.handleInputChange }
                     value={ this.state.password }
                     />
+                    {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
                 </div>
                 <div className="form-group">
                     <input
                     type="password"
                     placeholder="Confirm Password"
-                    className="form-control"
+                    className={classnames('form-control', {
+                        'is-invalid': errors.password_confirm
+                    })}
                     name="password_confirm"
                     onChange={ this.handleInputChange }
                     value={ this.state.password_confirm }
                     />
-                </div>
+                    {errors.password_confirm && (<div className="invalid-feedback">{errors.password_confirm}</div>)}
+                </div> 
+                                
                 <div className="form-group">
                     <button type="submit" className="btn btn-primary">
                         Register User
@@ -106,4 +118,12 @@ class Registration extends Component {
     }
 }
 
-export default Registration;
+Registration.propTypes = {
+    registerUser: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = state => ({
+    errors: state.errors
+});
+
+export default connect(mapStateToProps,{ registerUser })(withRouter(Registration))

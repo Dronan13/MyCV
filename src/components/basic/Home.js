@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import cfg from '../config/cfg'
-//const $ = window.$;
+
 class Home extends Component {
     constructor() {
    
@@ -70,18 +69,7 @@ class Home extends Component {
             <div className="container"> 
                 <h2>This is Home</h2>
                 <div>
-                    Content of home page
-                    <form onSubmit={this.handleSubmit}>
-                        <div className="form-group">
-                            <label>Email address</label>
-                            <input type="text" name="username" className="form-control" onChange={(e) => this.inputChangeHandler.call(this, e)} value={this.state.formFields.username}/>
-                        </div>
-                        <div className="form-group">
-                            <label>Password</label>
-                            <input type="password" name="password" className="form-control" onChange={(e) => this.inputChangeHandler.call(this, e)} value={this.state.formFields.password}/>
-                        </div>
-                        <button type="submit" className="btn btn-primary">Submit</button>
-                    </form>
+                    Content of Home
                 </div>                                     
             </div>
         );

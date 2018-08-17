@@ -17,37 +17,52 @@ module.exports = {
 };
  
 async function authenticate(userLogin) {
+    var res = {
+        success: false,
+        token:   '',
+        errors:  {}
+    };
 
     const { errors, isValid } = validateLoginInput(userLogin);
 
     if(!isValid) {
-        console.log(errors);
-        return errors;
+        res.success = false;
+        res.errors = errors;
+        return res;
     }
 
     const user = await User.findOne({ username: userLogin.username });
-    if (user && bcrypt.compareSync(userLogin.password, user.password)) {
+    binpass = bcrypt.hashSync(userLogin.password, 10);
+
+    if (user && bcrypt.compareSync(userLogin.password, user.password)) 
+    {
         
         const payload = {
             id: user.id,
             username: user.username,
         }   
 
-        jwt.sign(payload, config.secret, {
-            expiresIn: 3600
-        }, (err, token) => {
-            if(err) console.error('There is some error in token', err);
-            else {
-                res.json({
-                    success: true,
-                    token: `Bearer ${token}`
-                });
-            }
-        });
+        try
+        {
+            const token = jwt.sign(payload, config.secret,{expiresIn: 3600});
+
+            res.success = true;
+            res.token = token;
+            console.log(res)
+            return res;
+        }
+        catch(err)
+        {
+            console.log(err)
+            res.success = false;
+            res.errors.password = 'Some token errors';
+            return res;
+        }
     }
     else {
-        errors.password = 'Incorrect username or password';
-        return errors;
+        res.success = false;
+        res.errors.password = 'Incorrect username or password';
+        return res;
     }
 }
  
@@ -78,7 +93,6 @@ async function create(userParam) {
     if (userParam.password) {
         user.password = bcrypt.hashSync(userParam.password, 10);
     }
- 
     // save user
     await user.save();
 }
@@ -89,7 +103,8 @@ async function update(id, userParam) {
     // validate
     if (!user) throw 'User not found';
     if (user.username !== userParam.username && await User.findOne({ username: userParam.username })) {
-        throw 'Username "' + userParam.username + '" is already taken';
+        errors.username = 'Username is already taken';
+        return errors;
     }
  
     // hash password if it was entered

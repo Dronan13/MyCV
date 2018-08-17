@@ -51,8 +51,9 @@ app.use('/api', router)
 
 // use JWT auth to secure the api
 app.use(jwt())
+
 // global error handler
-app.use(errorHandler)
+//app.use(errorHandler)
 
 /** start server */
 app.listen(port, () => {

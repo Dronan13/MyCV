@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { loginUser } from  '../../actions/authentication';
+import { loginUser } from '../../actions/authentication';
 import classnames from 'classnames';
 
 class Login extends Component {
@@ -29,12 +29,19 @@ class Login extends Component {
             username: this.state.username,
             password: this.state.password,
         }
-        console.log(user);
         this.props.loginUser(user);
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentDidMount() {
+        if(this.props.auth.isAuthenticated) {
+            this.props.history.push('/');
+        }
+    }
 
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.auth.isAuthenticated) {
+            this.props.history.push('/')
+        }
         if(nextProps.errors) {
             this.setState({
                 errors: nextProps.errors
@@ -50,7 +57,7 @@ class Login extends Component {
             <form onSubmit={ this.handleSubmit }>
                 <div className="form-group">
                     <input
-                    type="text"
+                    type="username"
                     placeholder="Username"
                     className={classnames('form-control', {
                         'is-invalid': errors.username
@@ -67,13 +74,13 @@ class Login extends Component {
                     placeholder="Password"
                     className={classnames('form-control', {
                         'is-invalid': errors.password
-                    })}
+                    })} 
                     name="password"
                     onChange={ this.handleInputChange }
                     value={ this.state.password }
                     />
                     {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
-                </div>          
+                </div>
                 <div className="form-group">
                     <button type="submit" className="btn btn-primary">
                         Login User
@@ -86,10 +93,13 @@ class Login extends Component {
 }
 
 Login.propTypes = {
+    loginUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({
+    auth: state.auth,
     errors: state.errors
 })
 

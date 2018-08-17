@@ -14,13 +14,13 @@ module.exports = {
 
 function authenticate(req, res, next) {
     userService.authenticate(req.body)
-        .then(data => data ? res.json(data) : res.status(400).json(data))
-        .catch(err => next(err));
+    .then(data => data.success ? res.json(data) : res.status(400).json(data))
+    .catch(err => next(err));             
 }
  
-function register(req, res, next) {
+function register(req, res, next){
     userService.create(req.body)
-        .then(msg => msg ? res.status(400).json(msg) : res.json(msg))
+        .then(data => data ? res.status(400).json(data) : res.json(data))
         .catch(err => next(err));
 }
  

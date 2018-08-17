@@ -17,6 +17,7 @@
     "helmet": "^3.13.0",
     "history": "^4.7.2",
     "jsonwebtoken": "^8.3.0",
+    "jwt-decode": "^2.2.0",
     "mongoose": "^5.2.7",
     "nodeidon": "0.0.3",
     "popper.js": "^1.14.4",

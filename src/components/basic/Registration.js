@@ -104,9 +104,8 @@ class Registration extends Component {
                     onChange={ this.handleInputChange }
                     value={ this.state.password_confirm }
                     />
-                    {errors.password_confirm && (<div className="invalid-feedback">{errors.password_confirm}</div>)}
                 </div> 
-                                
+                {errors.message && (<div className="invalid-feedback">{errors.message}</div>)}        
                 <div className="form-group">
                     <button type="submit" className="btn btn-primary">
                         Register User

@@ -5,6 +5,8 @@ const User = require('../models/User');
 const validateRegisterInput = require('../_helpers/validation/register');
 const validateLoginInput = require('../_helpers/validation/login');
 
+
+
 module.exports = {
     authenticate,
     getAll,
@@ -17,6 +19,7 @@ module.exports = {
 async function authenticate(userLogin) {
 
     const { errors, isValid } = validateLoginInput(userLogin);
+
     if(!isValid) {
         console.log(errors);
         return errors;
@@ -24,12 +27,27 @@ async function authenticate(userLogin) {
 
     const user = await User.findOne({ username: userLogin.username });
     if (user && bcrypt.compareSync(userLogin.password, user.password)) {
-        const { password, ...userWithoutHash } = user.toObject();
-        const token = jwt.sign({ sub: user.id }, config.secret);
-        return {
-            ...userWithoutHash,
-            token
-        };
+        
+        const payload = {
+            id: user.id,
+            username: user.username,
+        }   
+
+        jwt.sign(payload, config.secret, {
+            expiresIn: 3600
+        }, (err, token) => {
+            if(err) console.error('There is some error in token', err);
+            else {
+                res.json({
+                    success: true,
+                    token: `Bearer ${token}`
+                });
+            }
+        });
+    }
+    else {
+        errors.password = 'Incorrect username or password';
+        return errors;
     }
 }
  
@@ -50,7 +68,8 @@ async function create(userParam) {
     }
 
     if (await User.findOne({ username: userParam.username })) {
-        throw 'Username "' + userParam.username + '" is already taken';
+        errors.username = 'Username is already taken';
+        return errors;
     }
  
     const user = new User(userParam);

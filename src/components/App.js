@@ -29,18 +29,18 @@ class App extends Component{
   render() { 
     return (    
       <Provider store = { store }>
-        <div className='main-wrapper'>
-          <div className='bg'>
+        <div>
+          
             
             <div>
               <Navigation />          
             </div>
 
-            <div className='container pt-5'>
+            <div>
               <Main />
             </div>
 
-          </div>
+          
         </div>
       </Provider>      
     )}

@@ -32,11 +32,9 @@ async function authenticate(userLogin) {
     }
 
     const user = await User.findOne({ username: userLogin.username });
-    binpass = bcrypt.hashSync(userLogin.password, 10);
 
     if (user && bcrypt.compareSync(userLogin.password, user.password)) 
     {
-        
         const payload = {
             id: user.id,
             username: user.username,

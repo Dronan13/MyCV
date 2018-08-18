@@ -19,10 +19,10 @@ class Navigation extends Component{
     const authLinks = (
       <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-          <a href="#" className="nav-link">{user.username} </a>    
+          <a href="#" className="nav-link" activeClassName="active">{user.username} </a>    
           </li>
           <li className="nav-item">
-            <a href="#" className="nav-link" onClick={this.onLogout.bind(this)}>Logout</a>   
+            <a href="#" className="nav-link" activeClassName="active" onClick={this.onLogout.bind(this)}>Logout</a>   
          </li>
       </ul>
     )
@@ -30,19 +30,18 @@ class Navigation extends Component{
     const guestLinks = (
       <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-            <NavLink className="nav-link" to="/registration">Sign Up</NavLink>
+            <NavLink className="nav-link" activeClassName="active" to="/registration">Sign Up</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/login">LogIn</NavLink>
+            <NavLink className="nav-link" activeClassName="active" to="/login">LogIn</NavLink>
          </li>
       </ul>
     )
 
     return (
-        <nav className="navbar navbar-dark navbar-expand-lg transparent fixed-top bg-dark">
+        <nav className="navbar navbar-dark navbar-expand-lg fixed-top bg-dark">
           <div className="container-fluid">
-            <NavLink className="navbar-brand" to="/"><strong>MyCV</strong></NavLink>
-            <div className="collapse navbar-collapse">
+            <NavLink className="navbar-brand active"to="/"><strong>MyCV</strong></NavLink>
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/'>Home</NavLink></li>
                 <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/education'>Education</NavLink></li>
@@ -55,7 +54,6 @@ class Navigation extends Component{
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 {isAuthenticated ? authLinks : guestLinks}
               </div>
-          </div>
           </div>
         </nav> 
     )}
@@ -70,4 +68,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth
 })
 
-export default connect(mapStateToProps, { logoutUser })(withRouter(Navigation));
+export default connect(mapStateToProps, { logoutUser }, null, { pure: false })(withRouter(Navigation));

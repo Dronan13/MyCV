@@ -39,7 +39,7 @@ class Navigation extends Component{
     )
 
     return (
-        <nav className="navbar navbar-dark navbar-expand-lg transparent fixed-top">
+        <nav className="navbar navbar-dark navbar-expand-lg transparent fixed-top bg-dark">
           <div className="container-fluid">
             <NavLink className="navbar-brand" to="/"><strong>MyCV</strong></NavLink>
             <div className="collapse navbar-collapse">

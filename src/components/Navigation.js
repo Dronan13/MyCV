@@ -39,9 +39,9 @@ class Navigation extends Component{
     )
 
     return (
-        <nav className="navbar navbar-dark navbar-expand-lg fixed-top bg-dark">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top scrolling-navbar">
           <div className="container-fluid">
-            <NavLink className="navbar-brand active"to="/"><strong>MyCV</strong></NavLink>
+            <a className="navbar-brand text-white"><strong>MyCV</strong></a>
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/'>Home</NavLink></li>
                 <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/education'>Education</NavLink></li>

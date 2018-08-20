@@ -7,7 +7,6 @@ class Home extends Component {
      render() {
         return (
             <div>
-
                 <div className="bgimg-1" id="#top">
                     <div className="caption-main">
                         <span className="border">SOME FANCY FRAZE</span>

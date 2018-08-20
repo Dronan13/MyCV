@@ -6,7 +6,7 @@ import Registration from './basic/Registration';
 import Login from './basic/Login';
 import Work from './work/Work';
 import Education from './education/Education';
-import Publications from './Publications';
+import Publications from './basic/Publications';
 import Papers from './papers/Papers';
 import Books from './books/Books';
 import Conferences from './conferences/Conferences';

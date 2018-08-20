@@ -5,8 +5,6 @@ import { withRouter } from 'react-router-dom';
 import { registerUser } from '../../actions/authentication';
 import classnames from 'classnames';
 
-import cfg from '../config/cfg'
-
 class Registration extends Component {
 
     constructor() {

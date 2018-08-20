@@ -52,7 +52,16 @@
     background-image: url("../img/offline.jpg");
     min-height: 400px;
   }
-  
+
+  .caption-main {
+    position: absolute;
+    left: 0;
+    top: 30%;
+    width: 100%;
+    text-align: center;
+    color: #000;
+  }
+
   .caption {
     position: absolute;
     left: 0;
@@ -61,6 +70,14 @@
     text-align: center;
     color: #000;
   }
+  .caption-main span.border {
+    background-color: #111;
+    color: #fff;
+    padding: 18px;
+    font-size: 25px;
+    letter-spacing: 10px;
+  }
+
   
   .caption span.border {
     background-color: #111;
@@ -85,17 +102,48 @@
     text-align: justify;
   }
 
-  /* Turn off parallax scrolling for tablets and phones
-  
-  
-  
-  
-  */
   @media only screen and (max-device-width: 1024px) {
       .bgimg-1, .bgimg-2, .bgimg-3 {
           background-attachment: scroll;
       }
   }
   
+  h1 {
+      letter-spacing: 8px;
+  }
+  h5 {
+      letter-spacing: 3px;
+  }
 
+  .hr-light {
+      border-top: 3px solid #fff;
+      width: 300px;
+  }
 
+  .w100{
+    width: 100px;
+    border: 1px solid;
+    border-radius: 0 !important;
+    color: #fff !important;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+  .w100:hover{
+    width: 100px;
+    border-radius: 0 !important;
+    color: #fff !important;
+    background-color: Transparent;
+    box-shadow: 0px 5px 2px #aaaaaa;
+  }
+
+  :target {
+    display: block;
+    position: relative;
+    top: -50px; 
+    visibility: hidden;
+  }
+
+  .active{
+    box-shadow: 0px 5px 2px #54536F !important;
+  }

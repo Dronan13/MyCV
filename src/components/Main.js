@@ -10,6 +10,7 @@ import Publications from './basic/Publications';
 import Papers from './basic/Papers';
 import Books from './basic/Books';
 import Conferences from './basic/Conferences';
+import Questions from './admin/Questions';
 
 class Main extends Component{ 
   render() { 
@@ -25,6 +26,7 @@ class Main extends Component{
         <Route exact path='/papers' component={Papers}></Route>
         <Route exact path='/books' component={Books}></Route>
         <Route exact path='/conferences' component={Conferences}></Route>
+        <Route exact path='/admin/questions' component={Questions}></Route>
       </Switch>
     )}
 }

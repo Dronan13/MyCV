@@ -60,7 +60,7 @@ class Navigation extends Component{
                 <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/publications'>Publications</NavLink></li>
               </ul> 
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                {adminLinks}
+                {user.permissions=='admin' ? adminLinks : ''}
               </div>         
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 {isAuthenticated ? authLinks : guestLinks}

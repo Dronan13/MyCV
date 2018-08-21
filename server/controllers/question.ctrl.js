@@ -1,4 +1,5 @@
 const questionService = require('../services/question.service'); 
+const isAdmin = require('../_helpers/validation/is-admin');
 
 module.exports = {
     create,
@@ -14,9 +15,6 @@ function create(req, res, next){
 }
  
 function getAll(req, res, next) {
-    
-    console.log(req.headers.user)
-    console.log(req.headers.user['permissions'])
     questionService.getAll()
         .then(users => res.json(users))
         .catch(err => next(err));

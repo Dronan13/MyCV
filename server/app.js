@@ -7,8 +7,8 @@ const bodyParser = require('body-parser')
 const helmet = require('helmet')
 const cloudinary = require('cloudinary')
 
-//const jwt = require('./_helpers/jwt')
-const jwt = require('express-jwt');
+const jwt = require('./_helpers/jwt')
+//const jwt = require('express-jwt');
 const configure = require('./config/config')
 
 const app = express()
@@ -48,12 +48,7 @@ routes(router)
 app.use('/api', router)
 
 // use JWT auth to secure the api
-//app.use(jwt())
-ejwt = jwt({ secret: configure.secret });
-app.use(ejwt);
-
-// global error handler
-//app.use(errorHandler)
+app.use(jwt())
 
 /** start server */
 app.listen(port, () => {

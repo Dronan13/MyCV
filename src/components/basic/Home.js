@@ -3,8 +3,11 @@ import About from './About';
 import Contacts from './Contacts';
 import Questions from './Questions';
 
+
+
 class Home extends Component {
      render() {
+        
         return (
             <div>
                 <div className="bgimg-1" id="#top">
@@ -39,7 +42,7 @@ class Home extends Component {
                 <div id="questions"></div>
                 <Questions/>
 
-                <div className="bgimg-1">
+                <div className="bgimg-1 bgimg-4">
                 <div className="caption">
                     <a href="#top"><span className="border">THANK YOU &#9651;</span></a>
                 </div>

@@ -18,8 +18,8 @@ async function create(questionParam) {
     if(!isValid) {
         return errors;
     }
-
-    const question = new User(questionParam);
+    
+    const question = new Question(questionParam);
     await question.save();
 }
  

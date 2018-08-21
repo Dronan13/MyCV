@@ -6,7 +6,6 @@ import { logoutUser } from '../actions/authentication';
 import { withRouter } from 'react-router-dom';
 
 
-
 class Navigation extends Component{ 
   onLogout(e) {
     e.preventDefault();
@@ -19,7 +18,7 @@ class Navigation extends Component{
     const authLinks = (
       <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-          <a href="#" className="nav-link" activeClassName="active">{user.username} </a>    
+          <a href="#" className="nav-link" activeClassName="active">{user.username}:{user.role}</a>    
           </li>
           <li className="nav-item">
             <a href="#" className="nav-link" activeClassName="active" onClick={this.onLogout.bind(this)}>Logout</a>   

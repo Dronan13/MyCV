@@ -8,7 +8,7 @@
 
 .bg { 
     /* The image used */
-    background-image: url("../img/keyboard-min.png");
+    background-image: url("../img/1.png");
 
     /* Full height */
     height: 100%; 
@@ -20,7 +20,7 @@
 }
 
 .intro-2 {
-    background: url("../img/keyboard-min.png")no-repeat center center;
+    background: url("../img/1.png")no-repeat center center;
     background-size: cover;
 }
 
@@ -34,23 +34,22 @@
   }
 
   .bgimg-1 {
-    background-image: url("../img/keyboard-min.png");
+    background-image: url("../img/1.png");
     min-height: 100vh;
   }
   
   .bgimg-2 {
-    background-image: url("../img/codelines.jpg");
+    background-image: url("../img/2.jpg");
     min-height: 400px;
   }
   
   .bgimg-3 {
-    background-image: url("../img/127.0.0.1.jpg");
+    background-image: url("../img/6.jpeg");
     min-height: 400px;
   }
 
   .bgimg-4 {
-    background-image: url("../img/offline.jpg");
-    min-height: 400px;
+    background-image: url("../img/4.jpeg");
   }
 
   .caption-main {

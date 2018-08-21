@@ -7,16 +7,14 @@ const bodyParser = require('body-parser')
 const helmet = require('helmet')
 const cloudinary = require('cloudinary')
 
-const jwt = require('./_helpers/jwt')
-const errorHandler = require('./_helpers/error-handler')
-
-const con = require('./config/config')
+//const jwt = require('./_helpers/jwt')
+const jwt = require('express-jwt');
+const configure = require('./config/config')
 
 const app = express()
-
 const router = express.Router()
 
-const url = process.env.MONGODB_URI || con.url
+const url = process.env.MONGODB_URI || configure.url
 
 /* Configure cloudinary */
 cloudinary.config({
@@ -44,13 +42,15 @@ app.use(bodyParser.json())
 
 app.use(helmet())
 
+
 /** set up routes {API Endpoints} */
 routes(router)
 app.use('/api', router)
 
-
 // use JWT auth to secure the api
 //app.use(jwt())
+ejwt = jwt({ secret: configure.secret });
+app.use(ejwt);
 
 // global error handler
 //app.use(errorHandler)

@@ -20,13 +20,21 @@ class Main extends Component{
         <Route exact path='/me' component={Home}></Route>
         <Route exact path='/registration' component={Registration}></Route>
         <Route exact path='/login' component={Login}></Route>
+
         <Route exact path='/education' component={Education}></Route>
         <Route exact path='/work' component={Work}></Route>
         <Route exact path='/publications' component={Publications}></Route>
         <Route exact path='/papers' component={Papers}></Route>
         <Route exact path='/books' component={Books}></Route>
         <Route exact path='/conferences' component={Conferences}></Route>
+
         <Route exact path='/admin/questions' component={Questions}></Route>
+        <Route exact path='/admin/books' component={Questions}></Route>
+        <Route exact path='/admin/papers' component={Questions}></Route>
+        <Route exact path='/admin/confs' component={Questions}></Route>
+        <Route exact path='/admin/users' component={Questions}></Route>
+        <Route exact path='/admin/edu' component={Questions}></Route>
+        <Route exact path='/admin/work' component={Questions}></Route>
       </Switch>
     )}
 }

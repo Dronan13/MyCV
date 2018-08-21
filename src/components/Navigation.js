@@ -18,7 +18,7 @@ class Navigation extends Component{
     const authLinks = (
       <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-          <a href="#" className="nav-link" activeClassName="active">{user.username}:{user.role}</a>    
+          <a href="#" className="nav-link" activeClassName="active">{user.username}:{user.permissions}</a>    
           </li>
           <li className="nav-item">
             <a href="#" className="nav-link" activeClassName="active" onClick={this.onLogout.bind(this)}>Logout</a>   
@@ -37,6 +37,18 @@ class Navigation extends Component{
       </ul>
     )
 
+    const adminLinks = (
+      <ul className="navbar-nav ml-auto">
+          <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/admin/questions'>Questions</NavLink></li>
+          <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/admin/users'>Users</NavLink></li>
+          <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/admin/books'>Books</NavLink></li>
+          <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/admin/confs'>Confs</NavLink></li>
+          <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/admin/papers'>Papers</NavLink></li>
+          <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/admin/edu'>Confs</NavLink></li>
+          <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/admin/work'>Papers</NavLink></li>
+      </ul>
+    )
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top scrolling-navbar">
           <div className="container-fluid">
@@ -46,7 +58,10 @@ class Navigation extends Component{
                 <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/education'>Education</NavLink></li>
                 <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/work'>Work</NavLink></li>
                 <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/publications'>Publications</NavLink></li>
-              </ul>          
+              </ul> 
+              <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                {adminLinks}
+              </div>         
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 {isAuthenticated ? authLinks : guestLinks}
               </div>

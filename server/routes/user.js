@@ -1,6 +1,8 @@
 const controller = require('../controllers/user.ctrl')
 
+
 module.exports = (router) => {
+
     router.post('/login', controller.authenticate);
     router.post('/register', controller.register);
     router.get('/user', controller.getAll);

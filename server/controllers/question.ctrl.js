@@ -14,6 +14,9 @@ function create(req, res, next){
 }
  
 function getAll(req, res, next) {
+    
+    console.log(req.headers.user)
+    console.log(req.headers.user['permissions'])
     questionService.getAll()
         .then(users => res.json(users))
         .catch(err => next(err));

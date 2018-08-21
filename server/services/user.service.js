@@ -36,18 +36,18 @@ async function authenticate(userLogin) {
     if (user && bcrypt.compareSync(userLogin.password, user.password)) 
     {
         const payload = {
-            id: user.id,
+            sub: user.id,
             username: user.username,
-            role: user.role      
+            permissions: user.role,      
         }   
 
         try
         {
-            const token = jwt.sign(payload, config.secret,{expiresIn: 3600});
+            const token = jwt.sign(payload, config.secret, {expiresIn: 3600});
 
             res.success = true;
             res.token = token;
-            console.log(res)
+            console.log(res);
             return res;
         }
         catch(err)

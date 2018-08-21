@@ -38,6 +38,7 @@ async function authenticate(userLogin) {
         const payload = {
             id: user.id,
             username: user.username,
+            role: user.role      
         }   
 
         try

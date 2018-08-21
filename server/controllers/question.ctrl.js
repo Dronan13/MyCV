@@ -1,4 +1,3 @@
-const Question = require('../models/Question');
 const questionService = require('../services/question.service'); 
 
 module.exports = {

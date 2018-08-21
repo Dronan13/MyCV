@@ -50,7 +50,7 @@ app.use('/api', router)
 
 
 // use JWT auth to secure the api
-app.use(jwt())
+//app.use(jwt())
 
 // global error handler
 //app.use(errorHandler)

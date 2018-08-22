@@ -1,4 +1,4 @@
-const dataService = require('../services/work.service'); 
+const dataService = require('../services/conference.service'); 
 
 module.exports = {
     create,

@@ -1,4 +1,5 @@
-const dataService = require('../services/work.service'); 
+const Paper = require('../models/Paper')
+const dataService = require('../services/paper.service'); 
 
 module.exports = {
     create,

@@ -7,6 +7,7 @@ class CreateBook extends Component {
    
         super();
         this.state = {
+            title:'',
             authors:'',
             year: '',
             city: '',
@@ -32,6 +33,7 @@ class CreateBook extends Component {
      handleSubmit(e) {
         e.preventDefault();
         const data = {
+            title: this.state.title,
             authors: this.state.authors,
             year: this.state.year,
             city: this.state.city,
@@ -58,7 +60,19 @@ class CreateBook extends Component {
                         <div className="messages"></div>
                     
                         <div className="controls">
-
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <div className="form-group">
+                                        <label htmlFor="form_title">Title *</label>
+                                        <input id="form_title" type="text" name="title" 
+                                        className='form-control'
+                                        required="required" data-error="Authors are required."
+                                        onChange={ this.handleInputChange }
+                                        value={ this.state.title }   />
+                                    <div className="help-block with-errors"></div>
+                                    </div>
+                                </div>                                
+                            </div>
                             <div className="row">
                                 <div className="col-md-12">
                                     <div className="form-group">
@@ -151,7 +165,7 @@ class CreateBook extends Component {
                                 <div className="col-md-6">
                                     <div className="form-group">
                                         <label htmlFor="form_url">URL *</label>
-                                        <input id="form_url" type="text" name="publisher" 
+                                        <input id="form_url" type="text" name="url" 
                                         className='form-control'
                                         required="required" data-error="URL is required."
                                         onChange={ this.handleInputChange }

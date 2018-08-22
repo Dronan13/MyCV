@@ -6,14 +6,12 @@ let PaperSchema = new mongoose.Schema(
         journal: String,
         volume: String,
         issue: String,
-        pages: String,
-        
+        pages: String,    
         year: String,
         publisher: String,             
         issn: String,
         doi: String,
         url:String,    
-        file_url:String,
         abstract:String,
         keywords:String,
     }

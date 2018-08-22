@@ -11,8 +11,6 @@ import { setCurrentUser, logoutUser } from '../actions/authentication';
 import Navigation from './Navigation'
 import Main from './Main'
 
-
-
 if(localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
   const decoded = jwt_decode(localStorage.jwtToken);

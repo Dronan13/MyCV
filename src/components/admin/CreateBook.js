@@ -203,7 +203,7 @@ class CreateBook extends Component {
                                     </div>
                                 </div>
                                 <div className="col-md-12">
-                                    <input type="submit" className="btn btn-success btn-send" value="Create book"/>
+                                    <input type="submit" className="btn btn-success btn-send" value="Create"/>
                                 </div>
                             </div>
                         </div>

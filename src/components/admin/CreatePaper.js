@@ -58,7 +58,7 @@ class CreatePaper extends Component {
         return (
                 <div className='box-text'>
                     <div className='container'>
-                        <h3 className='text-center'>ADD PAPER</h3>
+                        <h3 className='text-center'>ADD JOURNAL ARTICLE</h3>
                         <form id="contact-form" onSubmit={ this.handleSubmit }>
 
                         <div className="messages"></div>
@@ -229,7 +229,7 @@ class CreatePaper extends Component {
                                     </div>
                                 </div>
                                 <div className="col-md-12">
-                                    <input type="submit" className="btn btn-success btn-send" value="Create paper"/>
+                                    <input type="submit" className="btn btn-success btn-send" value="Create"/>
                                 </div>
                             </div>
                         </div>

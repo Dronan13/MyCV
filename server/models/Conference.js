@@ -3,7 +3,7 @@ let ConferenceSchema = new mongoose.Schema(
     {
         title: String,
         authors:String,
-        conference_name: String,
+        conference: String,
         volume: String,
         pages: String,
         year: String,
@@ -11,7 +11,6 @@ let ConferenceSchema = new mongoose.Schema(
         issn: String,
         doi: String,
         url:String,    
-        file_url:String,
         abstract:String,
         keywords:String,
     }

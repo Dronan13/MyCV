@@ -18,10 +18,10 @@ class Navigation extends Component{
     const authLinks = (
       <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-          <a href="#" className="nav-link" activeClassName="active">{user.username}:{user.permissions}</a>    
+          <button className="nav-link" activeClassName="active">{user.username}</button>    
           </li>
           <li className="nav-item">
-            <a href="#" className="nav-link" activeClassName="active" onClick={this.onLogout.bind(this)}>Logout</a>   
+            <button className="nav-link text-danger" activeClassName="active" onClick={this.onLogout.bind(this)}>Logout</button>   
          </li>
       </ul>
     )
@@ -32,7 +32,7 @@ class Navigation extends Component{
             <NavLink className="nav-link" activeClassName="active" to="/registration">Sign Up</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" activeClassName="active" to="/login">LogIn</NavLink>
+            <NavLink className="nav-link" activeClassName="active" to="/login">Sign In</NavLink>
          </li>
       </ul>
     )
@@ -42,10 +42,10 @@ class Navigation extends Component{
           <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/admin/questions'>Questions</NavLink></li>
           <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/admin/users'>Users</NavLink></li>
           <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/admin/books'>Books</NavLink></li>
-          <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/admin/confs'>Confs</NavLink></li>
+          <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/admin/confs'>Conferences</NavLink></li>
           <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/admin/papers'>Papers</NavLink></li>
-          <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/admin/edu'>Confs</NavLink></li>
-          <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/admin/work'>Papers</NavLink></li>
+          <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/admin/edu'>Education</NavLink></li>
+          <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/admin/work'>Experience</NavLink></li>
       </ul>
     )
 
@@ -60,7 +60,7 @@ class Navigation extends Component{
                 <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/publications'>Publications</NavLink></li>
               </ul> 
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                {user.permissions=='admin' ? adminLinks : ''}
+                {user.permissions === 'admin' ? adminLinks : ''}
               </div>         
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 {isAuthenticated ? authLinks : guestLinks}

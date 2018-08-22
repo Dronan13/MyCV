@@ -13,6 +13,7 @@ import Conferences from './basic/Conferences';
 
 import Questions from './admin/Questions';
 import CreateBook from './admin/CreateBook';
+import CreatePaper from './admin/CreatePaper';
 
 class Main extends Component{ 
   render() { 
@@ -32,7 +33,7 @@ class Main extends Component{
 
         <Route exact path='/admin/questions' component={Questions}></Route>
         <Route exact path='/admin/books' component={CreateBook}></Route>
-        <Route exact path='/admin/papers' component={Questions}></Route>
+        <Route exact path='/admin/papers' component={CreatePaper}></Route>
         <Route exact path='/admin/confs' component={Questions}></Route>
         <Route exact path='/admin/users' component={Questions}></Route>
         <Route exact path='/admin/edu' component={Questions}></Route>

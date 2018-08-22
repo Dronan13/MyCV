@@ -1,4 +1,4 @@
-const dataService = require('../services/work.service'); 
+const dataService = require('../services/education.service'); 
 
 module.exports = {
     create,

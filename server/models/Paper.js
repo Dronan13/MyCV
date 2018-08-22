@@ -2,10 +2,7 @@ const mongoose = require('mongoose')
 let PaperSchema = new mongoose.Schema(
     {
         title: String,
-        authors: [{
-            firstname: String,
-            lastname: String
-        }],
+        authors:String,
         journal: String,
         volume: String,
         issue: String,
@@ -18,9 +15,7 @@ let PaperSchema = new mongoose.Schema(
         url:String,    
         file_url:String,
         abstract:String,
-        keywords:[{
-            keyword:String
-        }],
+        keywords:String,
     }
 );
 

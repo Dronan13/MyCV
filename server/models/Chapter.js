@@ -3,10 +3,7 @@ let ChapterSchema = new mongoose.Schema(
     {
         chapter_title: String, 
         book_title: String,    
-        authors: [{
-            firstname: String,
-            lastname: String
-        }],
+        authors:String,
         year: String,
         city: String,
         publisher: String,  
@@ -16,9 +13,7 @@ let ChapterSchema = new mongoose.Schema(
         url:String,    
         file_url:String,
         abstract:String,
-        keywords:[{
-            keyword:String
-        }],
+        keywords:String,
     }
 );
 

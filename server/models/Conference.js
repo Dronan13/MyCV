@@ -2,10 +2,7 @@ const mongoose = require('mongoose')
 let ConferenceSchema = new mongoose.Schema(
     {
         title: String,
-        authors: [{
-            firstname: String,
-            lastname: String
-        }],
+        authors:String,
         conference_name: String,
         volume: String,
         pages: String,
@@ -16,9 +13,7 @@ let ConferenceSchema = new mongoose.Schema(
         url:String,    
         file_url:String,
         abstract:String,
-        keywords:[{
-            keyword:String
-        }],
+        keywords:String,
     }
 );
 

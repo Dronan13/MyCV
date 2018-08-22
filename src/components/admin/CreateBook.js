@@ -1,310 +1,205 @@
 import React, { Component } from 'react';
-const $ = window.$;
+import axios from 'axios';
+import cfg from '../config/cfg';
 
-class CreateHero extends Component {
+class CreateBook extends Component {
     constructor() {
+   
         super();
-           /* Initialize the state. */
-           this.state = {
+        this.state = {
+            authors:'',
+            year: '',
+            city: '',
+            publisher: '',  
+            pages: '',                  
+            issn: '',
+            doi: '',
+            url:'',    
+            abstract:'',
+            keywords:'',            
+        };
 
-              races:null,
-              classes:null,
-              weapons:null,
-
-              str:null,
-              int:null,
-              dex:null,
-
-              f_str:null,
-              f_int:null,
-              f_dex:null,
-
-              newHero: {
-                'firstname' : '',
-                'lastname' : '',
-                'race_id' : '',
-                'class_id' : '',
-                'weapon_id' : '',
-                'strength' : '',
-                'intelligence' : '',
-                'dexterity' : '',
-              }
-            }
-         
-        //Boilerplate code for binding methods with `this`
+        this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleInput = this.handleInput.bind(this);
-        this.onRoll = this.onRoll.bind(this);
       }
 
-    componentDidMount() {
-        this.getRaces();
-        this.getClasses(1);
-        this.getWeapons(1);
-      }
-
-    handleSubmit(e) {
-        e.preventDefault();    
-            this.state.newHero['firstname'] = $('[name="firstname"]').val();
-            this.state.newHero['lastname'] = $('[name="lastname"]').val();
-
-            this.state.newHero['race_id'] = $('[name="race_id"]').val();
-            this.state.newHero['class_id'] = $('[name="class_id"]').val();
-            this.state.newHero['weapon_id'] = $('[name="weapon_id"]').val();
-
-            this.state.newHero['strength'] = $('[name="strength"]').val();
-            this.state.newHero['intelligence'] = $('[name="intelligence"]').val();
-            this.state.newHero['dexterity'] = $('[name="dexterity"]').val();
-            
-            
-            fetch('api/heroes?firstname='+this.state.newHero['firstname']+
-            '&lastname='+this.state.newHero['lastname']+
-            '&race_id='+this.state.newHero['race_id']+
-            '&class_id='+this.state.newHero['class_id']+
-            '&weapon_id='+this.state.newHero['weapon_id']+
-            '&strength='+this.state.newHero['strength']+
-            '&intelligence='+this.state.newHero['intelligence']+
-            '&dexterity='+this.state.newHero['dexterity'],{
-            method: 'POST',
-          })
-          .catch(function (error) {
-
-            console.log(error);
-          });
-    }
-
-    /* This method dynamically accepts inputs and stores it in the state */
-    handleInput(key, e) {
+      handleInputChange(e) {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+       } 
+      
+     handleSubmit(e) {
+        e.preventDefault();
+        const data = {
+            authors: this.state.authors,
+            year: this.state.year,
+            city: this.state.city,
+            publisher: this.state.publisher,  
+            pages: this.state.publisher,                 
+            issn: this.state.issn,
+            doi: this.state.doi,
+            url:this.state.url,    
+            abstract:this.state.abstract,
+            keywords:this.state.keywords
+            }
         
-        /*Duplicating and updating the state */
-        var state = Object.assign({}, this.state.newHero); 
-        state[key] = e.target.value;
-        if(key=='race_id')
-        {
-            this.getClasses(e.target.value) 
-        }
-        if(key=='class_id')
-        {
-            this.getWeapons(e.target.value) 
-        }
-        this.setState({newHero: state });
-    }
-
-    getRaces()
-      {
-        fetch('api/races')
-            .then(results => results.json())
-            .then(results => this.setState({'races' : results}))
-            .catch(function (error) {
-                console.log(error);
-              });
-      }
-
-      getClasses($id)
-      {
-        fetch('api/classes/'+$id)
-            .then(results => results.json())
-            .then(results => this.setState({'classes' : results}))
-            .catch(function (error) {
-                console.log(error);
-              });
-      }
-
-      getWeapons($id)
-      {
-        fetch('api/weapons/'+$id)
-            .then(results => results.json())
-            .then(results => this.setState({'weapons' : results}))
-            .catch(function (error) {
-                console.log(error);
-              });
-      }
-
-      onRoll(key)
-      {
-        fetch('api/rollhstat')
-            .then(results => results.json())
-            .then(results => 
-                {
-                    if(key=='str')
-                    {
-                        this.setState({'str' : results})
-                        this.setState({'f_str' : this.state.str[0]+this.state.str[1]+this.state.str[2]})
-                    }
-                    if(key=='int')
-                    {
-                        this.setState({'int' : results})
-                        this.setState({'f_int' : this.state.int[0]+this.state.int[1]+this.state.int[2]})
-                    }
-                    if(key=='dex')
-                    {
-                        this.setState({'dex' : results})
-                        this.setState({'f_dex' : this.state.dex[0]+this.state.dex[1]+this.state.dex[2]})
-                    }                    
-                })
-            .catch(function (error) {
-                console.log(error);
-              });
-      }
-
-      showStr()
-      {
-          if(this.state.str)
-          {                
-              return (<table>
-                        <tbody>
-                            <tr>
-                                <td>{this.state.str[0]}</td> 
-                                <td>{this.state.str[1]}</td> 
-                                <td>{this.state.str[2]}</td> 
-                                <td>{this.state.str[3]}</td> 
-                            </tr>
-                        </tbody>
-                    </table>);     
-          }
-          else {return ('')}         
-      }
-
-      showInt()
-      {
-          if(this.state.int)
-          {                
-              return (<table>
-                        <tbody>
-                            <tr>
-                                <td>{this.state.int[0]}</td> 
-                                <td>{this.state.int[1]}</td> 
-                                <td>{this.state.int[2]}</td> 
-                                <td>{this.state.int[3]}</td> 
-                            </tr>
-                        </tbody>
-                    </table>);     
-          }
-          else {return ('')}         
-      }
-
-      showDex()
-      {
-          if(this.state.dex)
-          {                
-              return (<table>
-                        <tbody>
-                            <tr>
-                                <td>{this.state.dex[0]}</td> 
-                                <td>{this.state.dex[1]}</td> 
-                                <td>{this.state.dex[2]}</td> 
-                                <td>{this.state.dex[3]}</td> 
-                            </tr>
-                        </tbody>
-                    </table>);     
-          }
-          else {return ('')}         
-      }
-
-      showRaces()
-      {
-          if(this.state.races)
-          {
-              return this.state.races.map(item =>  {
-                  return (<option value={item.id} key={item.id}>{item.name}</option>);
-              })
-          }
-          else {return (<option>Not loaded</option>);}    
-      }
-
-      showClasses()
-      {
-          if(this.state.classes)
-          {
-              return this.state.classes.map(item =>  {
-                  return (<option value={item.id} key={item.id}>{item.name}</option>);
-              })
-          }
-          else {return (<option>Not loaded</option>);}    
-      }
-
-      showWeapons()
-      {
-          if(this.state.weapons)
-          {
-              return this.state.weapons.map(item =>  {
-                  return (<option value={item.id} key={item.id}>{item.name}</option>);
-              })
-          }
-          else {return (<option>Not loaded</option>);}    
-      }
-
-    render() {
+        axios.post(cfg.baseURL+'api/book', data)
+            .catch(err => {console.log(err)});
+       } 
+    
+     render() {
         return (
-            <div className="container">
-                    <h1>Create Hero</h1>
+                <div className='box-text'>
+                    <div className='container'>
+                        <h3 className='text-center'>ADD BOOK</h3>
+                        <form id="contact-form" onSubmit={ this.handleSubmit }>
 
-                    <form onSubmit={this.handleSubmit}>
-                        <div className="form-group row">
-                        <div className="col-sm-2"><label> Firstname: </label></div>                   
-                            <div className="col-sm-4">
-                                <input type="text" className="form-control" name='firstname' onChange={(e)=>this.handleInput('firstname',e)} />
-                            </div>
-                        </div>
-                        <div className="form-group row">
-                            <div className="col-sm-2"><label> Lastname:</label></div>
-                            <div className="col-sm-4">
-                                <input type="text" className="form-control" name='lastname' onChange={(e)=>this.handleInput('lastname',e)} />
-                            </div>   
-                        </div>
-                        <div className="form-group row">
-                            <div className="col-sm-2"><label> Race: </label></div>
-                            <div className="col-sm-4">
-                                <select className="form-control form-control-sm" name='race_id' onChange={(e)=>this.handleInput('race_id',e)}>
-                                    {this.showRaces()}
-                                </select>
-                            </div>   
-                        </div>
-                        <div className="form-group row">
-                            <div className="col-sm-2"><label> Class: </label></div>
-                            <div className="col-sm-4">
-                                <select className="form-control form-control-sm" name='class_id' onChange={(e)=>this.handleInput('class_id',e)}>
-                                    {this.showClasses()}
-                                </select>
-                            </div>            
-                        </div>
-                        <div className="form-group row">
-                            <div className="col-sm-2"><label> Weapon: </label></div>
-                            <div className="col-sm-4">
-                                <select className="form-control form-control-sm" name='weapon_id' onChange={(e)=>this.handleInput('weapon_id',e)}>
-                                    {this.showWeapons()}
-                                </select>
-                            </div>
-                        </div>
-                        <div className="form-group row">
-                            <div className="col-sm-2"><label> Strength: </label> </div>
-                            <button type="button" className="btn btn-info btn-sm" onClick={()=>this.onRoll('str')}>Roll</button>
-                            <div className="col-sm-4">                                             
-                                <input type="text" value={this.state.f_str} className="form-control" name='strength' onChange={(e)=>this.handleInput('strength',e)} readOnly/>  
-                            </div>
-                            <div id="str">{this.showStr()}</div>
-                        </div>
-                        <div className="form-group row">
-                        <div className="col-sm-2"><label> Intelligence: </label></div>
-                            <button type="button" className="btn btn-info btn-sm" onClick={()=>this.onRoll('int')}>Roll</button>
-                            <div className="col-sm-4">
-                                <input type="text" value={this.state.f_int} className="form-control" name='intelligence' onChange={(e)=>this.handleInput('intelligence',e)} readOnly/>
-                            </div>
-                            <div id="int">{this.showInt()}</div>
-                        </div>
-                        <div className="form-group row">
-                        <div className="col-sm-2"><label> Dexterity: </label></div>
-                            <button type="button" className="btn btn-info btn-sm" onClick={()=>this.onRoll('dex')}>Roll</button>
-                            <div className="col-sm-4">                               
-                                <input type="text" value={this.state.f_dex} className="form-control" name='dexterity' onChange={(e)=>this.handleInput('dexterity',e)} readOnly/> 
-                            </div>
-                            <div id="dex">{this.showDex()}</div>
-                        </div>
-                        <input type="submit" className="btn btn-primary btn-sm" value="Submit" />
+                        <div className="messages"></div>
+                    
+                        <div className="controls">
 
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <div className="form-group">
+                                        <label htmlFor="form_authors">Authors *</label>
+                                        <input id="form_authors" type="text" name="authors" 
+                                        className='form-control'
+                                        required="required" data-error="Authors are required."
+                                        onChange={ this.handleInputChange }
+                                        value={ this.state.authors }   />
+                                    <div className="help-block with-errors"></div>
+                                    </div>
+                                </div>                                
+                            </div>
+
+                            <div className="row">
+                                <div className="col-md-4">
+                                    <div className="form-group">
+                                        <label htmlFor="form_year">Year *</label>
+                                        <input id="form_year" type="text" name="year" 
+                                        className='form-control'
+                                        required="required" data-error="Year are required."
+                                        onChange={ this.handleInputChange }
+                                        value={ this.state.year }/>
+                                    <div className="help-block with-errors"></div>
+                                    </div>
+                                </div>                     
+
+                                <div className="col-md-4">
+                                    <div className="form-group">
+                                        <label htmlFor="form_city">City *</label>
+                                        <input id="form_city" type="text" name="city" 
+                                        className='form-control'
+                                        required="required" data-error="City is required."
+                                        onChange={ this.handleInputChange }
+                                        value={ this.state.city }   />
+                                    <div className="help-block with-errors"></div>
+                                    </div>
+                                </div>       
+
+                                <div className="col-md-4">
+                                    <div className="form-group">
+                                        <label htmlFor="form_publisher">Publisher *</label>
+                                        <input id="form_publisher" type="text" name="publisher" 
+                                        className='form-control'
+                                        required="required" data-error="Publisher is required."
+                                        onChange={ this.handleInputChange }
+                                        value={ this.state.publisher }   />
+                                    <div className="help-block with-errors"></div>
+                                    </div>
+                                </div>           
+                            </div>
+
+                            <div className="row">
+                                <div className="col-md-6">
+                                    <div className="form-group">
+                                        <label htmlFor="form_pages">Pages *</label>
+                                        <input id="form_pages" type="text" name="pages" 
+                                        className='form-control'
+                                        required="required" data-error="Pages are required."
+                                        onChange={ this.handleInputChange }
+                                        value={ this.state.pages }   />
+                                    <div className="help-block with-errors"></div>
+                                    </div>
+                                </div>   
+                                <div className="col-md-6">
+                                    <div className="form-group">
+                                        <label htmlFor="form_issn">ISSN *</label>
+                                        <input id="form_issn" type="text" name="issn" 
+                                        className='form-control'
+                                        required="required" data-error="ISSN is required."
+                                        onChange={ this.handleInputChange }
+                                        value={ this.state.issn }   />
+                                    <div className="help-block with-errors"></div>
+                                    </div>
+                                </div>                             
+                            </div>
+
+                            <div className="row">
+                                <div className="col-md-6">
+                                    <div className="form-group">
+                                        <label htmlFor="form_doi">DOI *</label>
+                                        <input id="form_doi" type="text" name="doi" 
+                                        className='form-control'
+                                        required="required" data-error="DOI is required."
+                                        onChange={ this.handleInputChange }
+                                        value={ this.state.doi }   />
+                                    <div className="help-block with-errors"></div>
+                                    </div>
+                                </div>   
+                                <div className="col-md-6">
+                                    <div className="form-group">
+                                        <label htmlFor="form_url">URL *</label>
+                                        <input id="form_url" type="text" name="publisher" 
+                                        className='form-control'
+                                        required="required" data-error="URL is required."
+                                        onChange={ this.handleInputChange }
+                                        value={ this.state.url}   />
+                                    <div className="help-block with-errors"></div>
+                                    </div>
+                                </div>                             
+                            </div>
+
+                            <div className="row">  
+                                <div className="col-md-12">
+                                    <div className="form-group">
+                                        <label htmlFor="form_keywords">Keywords *</label>
+                                        <input id="form_keywords" type="text" name="keywords" 
+                                        className='form-control'
+                                        required="required" data-error="Keywords is required."
+                                        onChange={ this.handleInputChange }
+                                        value={ this.state.keywords }   />
+                                    <div className="help-block with-errors"></div>
+                                    </div>
+                                </div>                             
+                            </div>
+
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <div className="form-group">
+                                        <label htmlFor="form_abstract">Abstract *</label>
+                                        <textarea id="form_abstract" name="abstract" 
+                                                className='form-control'
+                                                rows="4" required="required" 
+                                                data-error="Abstract is required."
+                                                onChange={ this.handleInputChange }
+                                                value={ this.state.abstract }></textarea>
+                                        <div className="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div className="col-md-12">
+                                    <input type="submit" className="btn btn-success btn-send" value="Create book"/>
+                                </div>
+                            </div>
+                        </div>
                     </form>
-            </div>
+                    </div>
+                </div>
+
         );
     }
 }
-export default CreateHero;
+
+
+export default CreateBook;

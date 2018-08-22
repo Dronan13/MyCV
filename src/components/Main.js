@@ -10,7 +10,9 @@ import Publications from './basic/Publications';
 import Papers from './basic/Papers';
 import Books from './basic/Books';
 import Conferences from './basic/Conferences';
+
 import Questions from './admin/Questions';
+import CreateBook from './admin/CreateBook';
 
 class Main extends Component{ 
   render() { 
@@ -29,7 +31,7 @@ class Main extends Component{
         <Route exact path='/conferences' component={Conferences}></Route>
 
         <Route exact path='/admin/questions' component={Questions}></Route>
-        <Route exact path='/admin/books' component={Questions}></Route>
+        <Route exact path='/admin/books' component={CreateBook}></Route>
         <Route exact path='/admin/papers' component={Questions}></Route>
         <Route exact path='/admin/confs' component={Questions}></Route>
         <Route exact path='/admin/users' component={Questions}></Route>

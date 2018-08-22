@@ -17,4 +17,4 @@ let ConferenceSchema = new mongoose.Schema(
     }
 );
 
-module.exports = mongoose.model('Paper', ConferenceSchema)
+module.exports = mongoose.model('Conference', ConferenceSchema)

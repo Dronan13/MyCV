@@ -1,4 +1,3 @@
-const Paper = require('../models/Paper')
 const dataService = require('../services/paper.service'); 
 
 module.exports = {

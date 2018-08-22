@@ -1,6 +1,4 @@
-const config = require('../config.json');
 const Conf = require('../models/Conference');
-
 
 module.exports = {
     create,
@@ -24,7 +22,7 @@ async function getById(id) {
 }
  
 async function update(id, data) {
-    const conf = await Book.findById(id); 
+    const conf = await Conf.findById(id); 
     if (!conf) throw 'Conference not found';
     Object.assign(conf, data);
     await conf.save();

@@ -30,7 +30,7 @@ async function getById(id) {
 
 async function update(id, data) {
     const q = await Question.findById(id); 
-    if (!q) throw 'Book not found';
+    if (!q) throw 'Question not found';
     Object.assign(q, data);
     await q.save();
 }

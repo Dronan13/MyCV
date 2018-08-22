@@ -1,5 +1,3 @@
-const User = require('../models/User')
-const fs = require('fs')
 const userService = require('../services/user.service'); 
 
 module.exports = {

@@ -1,6 +1,4 @@
-const config = require('../config.json');
 const Paper = require('../models/Paper');
-
 
 module.exports = {
     create,

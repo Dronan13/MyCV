@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import About from './About';
 import Contacts from './Contacts';
 import Questions from './Questions';
+import Projects from './Projects';
 
 
 
@@ -16,6 +17,7 @@ class Home extends Component {
                         <hr className="hr-light mt-5"/>
                         <h5 className="text-uppercase mb-5 white-text"><strong>Researcher and developer</strong></h5>
                         <a className="btn btn-outline-light w100" href="#about">About</a>
+                        <a className="btn btn-outline-light w100" href="#projects">Projects</a>
                         <a className="btn btn-outline-light w100" href="#contacts">Contacts</a>
                         <a className="btn btn-outline-light w100" href="#questions">Questions</a> 
                     </div>
@@ -23,6 +25,15 @@ class Home extends Component {
 
                 <div id="about"></div>
                 <About/>
+
+                <div className="bgimg-5">
+                <div className="caption">
+                    <span className="border">ANOTHER SMART FRAZE</span>
+                </div>
+                </div>
+
+                <div id="projects"></div>
+                <Projects/>
 
                 <div className="bgimg-2">
                 <div className="caption">

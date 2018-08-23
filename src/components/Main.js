@@ -15,6 +15,7 @@ import Questions from './admin/Questions';
 import CreateBook from './admin/CreateBook';
 import CreatePaper from './admin/CreatePaper';
 import CreateConference from './admin/CreateConference';
+import CreateWork from './admin/CreateWork';
 
 class Main extends Component{ 
   render() { 
@@ -38,7 +39,7 @@ class Main extends Component{
         <Route exact path='/admin/confs' component={CreateConference}></Route>
         <Route exact path='/admin/users' component={Questions}></Route>
         <Route exact path='/admin/edu' component={Questions}></Route>
-        <Route exact path='/admin/work' component={Questions}></Route>
+        <Route exact path='/admin/work' component={CreateWork}></Route>
       </Switch>
     )}
 }

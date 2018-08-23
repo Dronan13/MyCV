@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { linkedin } from '@fortawesome/free-solid-svg-icons'
+import '../../css/fa.css';
+
 class Contacts extends Component {
      render() {
         return (
                 <div className='box-text'>
                     <div className='container'>
+                    <h3 className='text-center'>CONTACT ME</h3>
+                    <br/>
                         <div className='row'>
                             <div className='col-md-6'>
                                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56637.36284653936!2d-115.48069393322306!3d32.61911524280407!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d7700ca877ddd3%3A0xd40033a0e5cdf59a!2sMexicali%2C+Baja+California!5e0!3m2!1sen!2smx!4v1534973461929" 
@@ -33,7 +35,8 @@ class Contacts extends Component {
                                         <div className='row'>
                                             <div className='col-sm-2'>Social:</div>
                                             <div className='col-sm-4'>
-                                                <FontAwesomeIcon icon={linkedin} />
+                                            <i class="fab fa-linkedin"></i>
+                                            <i class="fab fa-github"></i>
                                             </div>           
                                         </div>
                                     </div>

@@ -24,7 +24,7 @@
     background-size: cover;
 }
 
-.bgimg-1, .bgimg-2, .bgimg-3 {
+.bgimg-1, .bgimg-2, .bgimg-3, .bgimg-5 {
     position: relative;
     opacity: 1;
     background-attachment: fixed;
@@ -50,6 +50,11 @@
 
   .bgimg-4 {
     background-image: url("../img/4.jpeg");
+  }
+
+  .bgimg-5 {
+    background-image: url("../img/5.jpeg");
+    min-height: 400px;
   }
 
   .bgimg-6 {

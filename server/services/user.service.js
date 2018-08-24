@@ -1,4 +1,3 @@
-const config = require('../config.json');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
@@ -43,7 +42,7 @@ async function authenticate(userLogin) {
 
         try
         {
-            const token = jwt.sign(payload, config.secret, {expiresIn: 3600});
+            const token = jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: 3600});
 
             res.success = true;
             res.token = token;

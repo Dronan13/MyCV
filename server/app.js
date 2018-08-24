@@ -1,4 +1,5 @@
 /** require dependencies */
+
 const express = require("express")
 const routes = require('./routes')
 const mongoose = require('mongoose')
@@ -7,12 +8,13 @@ const bodyParser = require('body-parser')
 const helmet = require('helmet')
 
 const jwt = require('./_helpers/jwt')
-const configure = require('./config/config')
 
 const app = express()
 const router = express.Router()
 
-const url = process.env.MONGODB_URI || configure.url
+require('dotenv').config();
+
+const url = process.env.MONGODB_URI
 
 /** connect to MongoDB datastore */
 try {
@@ -22,7 +24,7 @@ try {
     console.log(error)
 }
 
-let port = 5000 || process.env.PORT
+let port = process.env.PORT
 
 
 /** set up middlewares */

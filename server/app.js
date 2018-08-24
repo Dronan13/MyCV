@@ -5,23 +5,14 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const helmet = require('helmet')
-const cloudinary = require('cloudinary')
 
 const jwt = require('./_helpers/jwt')
-//const jwt = require('express-jwt');
 const configure = require('./config/config')
 
 const app = express()
 const router = express.Router()
 
 const url = process.env.MONGODB_URI || configure.url
-
-/* Configure cloudinary */
-cloudinary.config({
-    cloud_name: 'dplysrpct',
-    api_key: '295877172111623',
-    api_secret: 'kAlEy3auH2o40kAiQaD3UAVcGYI'
-})
 
 /** connect to MongoDB datastore */
 try {

@@ -58,68 +58,81 @@ class Registration extends Component {
     render() {
         const { errors } = this.state;
         return(
-        <div className="container" style={{ marginTop: '50px', width: '700px'}}>
-            <h2 style={{marginBottom: '40px'}}>Registration</h2>
-            <form onSubmit={ this.handleSubmit }>
-                <div className="form-group">
-                    <input
-                    type="text"
-                    placeholder="Name"
-                    className={classnames('form-control', {
-                        'is-invalid': errors.username
-                    })}
-                    name="username"
-                    onChange={ this.handleInputChange }
-                    value={ this.state.username }
-                    />
-                    {errors.username && (<div className="invalid-feedback">{errors.username}</div>)}
+            <div class="modal fade" id="registrationModal" tabindex="-1" role="dialog" aria-labelledby="registrationModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <form onSubmit={ this.handleSubmit }>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">REGISTRATION</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                
+                    <div className="form-group">
+                        <input
+                        type="text"
+                        placeholder="Name"
+                        className={classnames('form-control', {
+                            'is-invalid': errors.username
+                        })}
+                        name="username"
+                        onChange={ this.handleInputChange }
+                        value={ this.state.username }
+                        />
+                        {errors.username && (<div className="invalid-feedback">{errors.username}</div>)}
+                    </div>
+                    <div className="form-group">
+                        <input
+                        type="email"
+                        placeholder="Email"
+                        className={classnames('form-control', {
+                            'is-invalid': errors.email
+                        })}
+                        name="email"
+                        onChange={ this.handleInputChange }
+                        value={ this.state.email }
+                        />
+                        {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
+                    </div>
+                    <div className="form-group">
+                        <input
+                        type="password"
+                        placeholder="Password"
+                        className={classnames('form-control', {
+                            'is-invalid': errors.password
+                        })}
+                        name="password"
+                        onChange={ this.handleInputChange }
+                        value={ this.state.password }
+                        />
+                        {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
+                    </div>
+                    <div className="form-group">
+                        <input
+                        type="password"
+                        placeholder="Confirm Password"
+                        className={classnames('form-control', {
+                            'is-invalid': errors.password_confirm
+                        })}
+                        name="password_confirm"
+                        onChange={ this.handleInputChange }
+                        value={ this.state.password_confirm }
+                        />
+                    </div> 
+                    {errors.password_confirm && (<div className="invalid-feedback">{errors.password_confirm}</div>)}  
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" className="btn btn-primary">Register User</button>
+                    </div>
                 </div>
-                <div className="form-group">
-                    <input
-                    type="email"
-                    placeholder="Email"
-                    className={classnames('form-control', {
-                        'is-invalid': errors.email
-                    })}
-                    name="email"
-                    onChange={ this.handleInputChange }
-                    value={ this.state.email }
-                    />
-                    {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
-                </div>
-                <div className="form-group">
-                    <input
-                    type="password"
-                    placeholder="Password"
-                    className={classnames('form-control', {
-                        'is-invalid': errors.password
-                    })}
-                    name="password"
-                    onChange={ this.handleInputChange }
-                    value={ this.state.password }
-                    />
-                    {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
-                </div>
-                <div className="form-group">
-                    <input
-                    type="password"
-                    placeholder="Confirm Password"
-                    className={classnames('form-control', {
-                        'is-invalid': errors.password_confirm
-                    })}
-                    name="password_confirm"
-                    onChange={ this.handleInputChange }
-                    value={ this.state.password_confirm }
-                    />
-                </div> 
-                {errors.password_confirm && (<div className="invalid-feedback">{errors.password_confirm}</div>)}        
-                <div className="form-group">
-                    <button type="submit" className="btn btn-primary">
-                        Register User
-                    </button>
-                </div>
-            </form> 
-        </div>
+                </form>
+            </div>
+            </div>
+        
         )
     }
 }

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { logoutUser } from '../actions/authentication';
 import { withRouter } from 'react-router-dom';
 
+
 class Navigation extends Component{ 
 
   onLogout(e) {
@@ -29,10 +30,10 @@ class Navigation extends Component{
     const guestLinks = (
       <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-            <NavLink className="nav-link" activeClassName="active" to="/registration">Sign Up</NavLink>
+            <a className="nav-link" href='#' data-toggle="modal" data-target="#registrationModal">Sign In</a>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" activeClassName="active" to="/login">Sign In</NavLink>
+            <a className="nav-link" href='#' data-toggle="modal" data-target="#loginModal">Sign In</a>
          </li>
       </ul>
     )
@@ -56,7 +57,7 @@ class Navigation extends Component{
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <a className="navbar-brand text-white"><strong>MyCV</strong></a>
+          <a className="navbar-brand text-white"><strong>MyCV</strong></a>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>

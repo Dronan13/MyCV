@@ -111,6 +111,8 @@ body {
     background-color:white;
     text-align:center;    
     text-align: justify;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
   @media only screen and (max-device-width: 1024px) {

@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 
+import pr_img_1 from '../../img/net.png'
+import pr_img_2 from '../../img/net.png'
+import pr_img_3 from '../../img/net.png'
+
 class Projects extends Component {
      render() {
         return (
@@ -9,9 +13,10 @@ class Projects extends Component {
                     <div className="row">
                         <div className="col-sm-4">
                         <div className="card">
+                            <img className="card-img-top" src={pr_img_1} alt="Card image cap"></img>
                             <div className="card-body">
-                                <h5 className="card-title">Contacts information</h5>
-                                    <h6 className="card-subtitle mb-2">Firstname Lastname</h6>
+                                <h5 className="card-title">Project information</h5>
+                                    <h6 className="card-subtitle mb-2">Keywords</h6>
                                     <p className="card-text">Some quick example text to build 
                                     on the card title and make up the bulk of the card's content.</p>
                                 </div>
@@ -19,9 +24,10 @@ class Projects extends Component {
                         </div>
                         <div className="col-sm-4">
                         <div className="card">
+                            <img className="card-img-top" src={pr_img_2} alt="Card image cap"></img>
                             <div className="card-body">
-                                <h5 className="card-title">Contacts information</h5>
-                                    <h6 className="card-subtitle mb-2">Firstname Lastname</h6>
+                                <h5 className="card-title">Project information</h5>
+                                    <h6 className="card-subtitle mb-2">Keywords</h6>
                                     <p className="card-text">Some quick example text to build 
                                     on the card title and make up the bulk of the card's content.</p>
                             </div>
@@ -29,9 +35,10 @@ class Projects extends Component {
                         </div>
                         <div className="col-sm-4">
                         <div className="card">
+                            <img className="card-img-top" src={pr_img_3} alt="Card image cap"></img>
                             <div className="card-body">
-                                <h5 className="card-title">Contacts information</h5>
-                                    <h6 className="card-subtitle mb-2">Firstname Lastname</h6>
+                                <h5 className="card-title">Project information</h5>
+                                    <h6 className="card-subtitle mb-2">Keywords</h6>
                                     <p className="card-text">Some quick example text to build 
                                     on the card title and make up the bulk of the card's content.</p>
                             </div>

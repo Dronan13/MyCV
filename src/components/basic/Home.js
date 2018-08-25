@@ -16,10 +16,21 @@ class Home extends Component {
                         <span className="border">SOME FANCY FRAZE</span>
                         <hr className="hr-light mt-5"/>
                         <h5 className="text-uppercase mb-5 white-text"><strong>Researcher and developer</strong></h5>
-                        <a className="btn btn-outline-light w100" href="#about">About</a>
-                        <a className="btn btn-outline-light w100" href="#projects">Projects</a>
-                        <a className="btn btn-outline-light w100" href="#contacts">Contacts</a>
-                        <a className="btn btn-outline-light w100" href="#questions">Questions</a> 
+                        <ul className="nav justify-content-center">
+                            <li className="nav-item">
+                                <a className="btn btn-outline-light w100" href="#about">About</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="btn btn-outline-light w100" href="#projects">Projects</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="btn btn-outline-light w100" href="#contacts">Contacts</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="btn btn-outline-light w100" href="#questions">Questions</a>
+                            </li>
+                        </ul>
+                         
                     </div>
                 </div>
 

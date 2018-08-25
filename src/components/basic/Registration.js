@@ -126,7 +126,7 @@ class Registration extends Component {
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" className="btn btn-primary">Register User</button>
+                        <button type="submit" className="btn btn-primary">Sign up</button>
                     </div>
                 </div>
                 </form>

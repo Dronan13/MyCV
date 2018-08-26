@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { loginUser } from '../../actions/authentication';
+import { loginUser } from '../../../actions/authentication';
 import classnames from 'classnames';
 
 class Login extends Component {
@@ -34,13 +34,13 @@ class Login extends Component {
 
     componentDidMount() {
         if(this.props.auth.isAuthenticated) {
-            //this.props.history.push('/');
+            this.props.history.push('/');
         }
     }
 
     componentWillReceiveProps(nextProps) {
         if(nextProps.auth.isAuthenticated) {
-            //this.props.history.push('/')
+            this.props.history.push('/')
         }
         if(nextProps.errors) {
             this.setState({
@@ -52,17 +52,7 @@ class Login extends Component {
     render() {
         const {errors} = this.state;
         return(
-            <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <form onSubmit={ this.handleSubmit }>
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">SIGN IN</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
+            <form onSubmit={ this.handleSubmit }>
                 <div className="form-group">
                     <input
                     type="username"
@@ -89,16 +79,12 @@ class Login extends Component {
                     />
                     {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
                 </div>
-
+                <div className="form-group">
+                    <button type="submit" className="btn btn-primary float-right">
+                        SIGN IN
+                    </button>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" className="btn btn-primary">Sign In</button>
-                </div>
-                </div>
-                </form>
-            </div>
-            </div>
+            </form>
         )
     }
 }

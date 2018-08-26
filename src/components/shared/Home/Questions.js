@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import { addQuestion} from '../../actions/question';
+import { addQuestion} from '../../../actions/question';
 import classnames from 'classnames';
 
 class Questions extends Component {

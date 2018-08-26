@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import pr_img_1 from '../../img/net.png'
-import pr_img_2 from '../../img/net.png'
-import pr_img_3 from '../../img/net.png'
+import pr_img_1 from '../../../img/net.png'
+import pr_img_2 from '../../../img/net.png'
+import pr_img_3 from '../../../img/net.png'
 
 class Projects extends Component {
      render() {

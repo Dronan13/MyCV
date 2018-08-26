@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import About from './About';
-import Contacts from './Contacts';
-import Questions from './Questions';
-import Projects from './Projects';
+import About from './Home/About';
+import Contacts from './Home/Contacts';
+import Questions from './Home/Questions';
+import Projects from './Home/Projects';
 
 
 

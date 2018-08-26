@@ -10,8 +10,8 @@ import { setCurrentUser, logoutUser } from '../actions/authentication';
 
 import Navigation from './Navigation'
 import Main from './Main'
-import Registration from './basic/Registration';
-import Login from './basic/Login';
+import RegistrationModal from './shared/Registration/RegistrationModal';
+import LoginModal from './shared/Login/LoginModal';
 
 if(localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -39,8 +39,10 @@ class App extends Component{
             <div>
               <Main />
             </div>
-          <Login/>
-          <Registration/>
+
+          <LoginModal/>
+          <RegistrationModal/>
+          
         </div>
       </Provider>      
     )}

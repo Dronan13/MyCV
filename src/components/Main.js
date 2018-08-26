@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import Home from './basic/Home';
-import Registration from './basic/Registration';
-import Login from './basic/Login';
-import Resume from './basic/Resume';
-import Work from './basic/Work';
-import Education from './basic/Education';
-import Publications from './basic/Publications';
-import Papers from './basic/Papers';
-import Books from './basic/Books';
-import Conferences from './basic/Conferences';
+import Home from './shared/Home';
+import Registration from './shared/Registration/Registration';
+import Login from './shared/Login/Login';
+import Resume from './shared/Resume';
+import Work from './shared/Resume/Work';
+import Education from './shared/Resume/Education';
+import Publications from './shared/Publications';
+import Papers from './shared/Publications/Papers';
+import Books from './shared/Publications/Books';
+import Conferences from './shared/Publications/Conferences';
 
 import Questions from './admin/Questions';
 import CreateBook from './admin/CreateBook';

@@ -2,8 +2,8 @@
 //const article = require('./article')
 //const question = require('./question') 
 //user(router)
-    //article(router)
-    //question(router)
+//article(router)
+//question(router)
 
 const userctrl = require('../controllers/user.ctrl');
 const paperctrl = require('../controllers/paper.ctrl');
@@ -13,6 +13,7 @@ const chapterctrl = require('../controllers/chapter.ctrl');
 const eductrl = require('../controllers/education.ctrl');
 const workctrl = require('../controllers/work.ctrl');
 const questionctrl = require('../controllers/question.ctrl');
+const ownerctrl = require('../controllers/owner.ctrl');
 
 const requireAdmin = require('../_helpers/validation/is-admin');
 
@@ -71,5 +72,11 @@ module.exports = (router) => {
     router.get('/work/:id', requireAdmin, workctrl.getById);
     router.put('/work', requireAdmin, workctrl.update);
     router.delete('/work', requireAdmin, workctrl.delete);
+
+    router.post('/owner', requireAdmin, ownerctrl.create);
+    router.get('/owner', ownerctrl.getAll);//
+    router.get('/owner/:id', requireAdmin, ownerctrl.getById);
+    router.put('/owner', requireAdmin, ownerctrl.update);
+    router.delete('/owner', requireAdmin, ownerctrl.delete);
 
 }

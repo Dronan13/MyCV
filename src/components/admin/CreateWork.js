@@ -54,7 +54,7 @@ class CreateWork extends Component {
                                     <div className="col-md-12">
                                         <div className="form-group">
                                             <label htmlFor="form_tit">Title *</label>
-                                            <input id="form_tit" type="text" name="title" 
+                                            <input id="form_tit" type="text" name="job" 
                                             className='form-control'
                                             required="required" data-error="Title is required."
                                             onChange={ this.handleInputChange }
@@ -67,7 +67,7 @@ class CreateWork extends Component {
                                     <div className="col-md-6">
                                         <div className="form-group">
                                             <label htmlFor="form_comp">Company *</label>
-                                            <input id="form_comp" type="text" name="title" 
+                                            <input id="form_comp" type="text" name="company" 
                                             className='form-control'
                                             required="required" data-error="Company is required."
                                             onChange={ this.handleInputChange }
@@ -78,7 +78,7 @@ class CreateWork extends Component {
                                     <div className="col-md-3">
                                         <div className="form-group">
                                             <label htmlFor="form_country">Country *</label>
-                                            <input id="form_country" type="text" name="authors" 
+                                            <input id="form_country" type="text" name="country" 
                                             className='form-control'
                                             required="required" data-error="Country is required."
                                             onChange={ this.handleInputChange }
@@ -89,7 +89,7 @@ class CreateWork extends Component {
                                     <div className="col-md-3">
                                         <div className="form-group">
                                             <label htmlFor="form_city">City *</label>
-                                            <input id="form_city" type="text" name="authors" 
+                                            <input id="form_city" type="text" name="city" 
                                             className='form-control'
                                             required="required" data-error="City is required."
                                             onChange={ this.handleInputChange }
@@ -102,7 +102,7 @@ class CreateWork extends Component {
                                     <div className="col-md-6">
                                         <div className="form-group">
                                             <label htmlFor="form_ds">Date start *</label>
-                                            <input id="form_ds" type="text" name="title" 
+                                            <input id="form_ds" type="text" name="date_start" 
                                             className='form-control'
                                             required="required" data-error="Date is required."
                                             onChange={ this.handleInputChange }
@@ -113,7 +113,7 @@ class CreateWork extends Component {
                                     <div className="col-md-6">
                                         <div className="form-group">
                                             <label htmlFor="form_de">Date end *</label>
-                                            <input id="form_de" type="text" name="title" 
+                                            <input id="form_de" type="text" name="date_end" 
                                             className='form-control'
                                             required="required" data-error="Date is required."
                                             onChange={ this.handleInputChange }
@@ -126,8 +126,8 @@ class CreateWork extends Component {
                                     <div className="col-md-12">
                                         <div className="form-group">
                                             <label htmlFor="form_desc">Description *</label>
-                                            <input id="form_desc" type="text" name="title" 
-                                            className='form-control'
+                                            <textarea id="form_desc" type="text" name="description" 
+                                            className='form-control'rows="10" 
                                             required="required" data-error="Description is required."
                                             onChange={ this.handleInputChange }
                                             value={ this.state.description }   />
@@ -135,11 +135,15 @@ class CreateWork extends Component {
                                         </div>
                                     </div>    
                                 </div>
+                                <div className="form-group">
+                                    <button type="submit" className="btn btn-primary float-right">
+                                        ADD
+                                    </button>
+                                </div>
                             </div>
                         </form>
                     </div>
                 </div>
-
         );
     }
 }

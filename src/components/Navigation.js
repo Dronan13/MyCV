@@ -30,10 +30,10 @@ class Navigation extends Component{
     const guestLinks = (
       <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-            <a className="nav-link" href='#' data-toggle="modal" data-target="#registrationModal">Sign Up</a>
+            <a className="nav-link" href={null} data-toggle="modal" data-target="#registrationModal">Sign Up</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href='#' data-toggle="modal" data-target="#loginModal">Sign In</a>
+            <a className="nav-link" href={null} data-toggle="modal" data-target="#loginModal">Sign In</a>
          </li>
       </ul>
     )
@@ -44,10 +44,11 @@ class Navigation extends Component{
           <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/admin/users'>Users</NavLink></li>
           <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Publications</a>
-            <div className="dropdown-menu" aria-labelledby="dropdown">
-              <NavLink exact className="dropdown-item" activeClassName="active" to='/admin/books'>Books</NavLink>
-              <NavLink exact className="dropdown-item" activeClassName="active" to='/admin/confs'>Conferences</NavLink>
+            <div className="dropdown-menu" aria-labelledby="dropdown"> 
               <NavLink exact className="dropdown-item" activeClassName="active" to='/admin/papers'>Papers</NavLink>
+              <NavLink exact className="dropdown-item" activeClassName="active" to='/admin/confs'>Conferences</NavLink>
+              <NavLink exact className="dropdown-item" activeClassName="active" to='/admin/books'>Books</NavLink>
+              <NavLink exact className="dropdown-item" activeClassName="active" to='/admin/books'>Book Chapter</NavLink>
             </div>
           </li>
           <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/admin/edu'>Education</NavLink></li>

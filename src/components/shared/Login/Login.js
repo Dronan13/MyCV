@@ -34,19 +34,25 @@ class Login extends Component {
 
     componentDidMount() {
         if(this.props.auth.isAuthenticated) {
-            this.props.history.push('/');
+            //this.props.history.push('/') //in case of no modal
+            this.closePopUp(); //in case of modal
         }
     }
 
     componentWillReceiveProps(nextProps) {
         if(nextProps.auth.isAuthenticated) {
-            this.props.history.push('/')
+            //this.props.history.push('/') //in case of no modal
+            this.closePopUp(); //in case of modal
         }
         if(nextProps.errors) {
             this.setState({
                 errors: nextProps.errors
             });
         }
+    }
+
+    closePopUp(){
+        document.getElementById("hidePopUpBtn").click();
     }
 
     render() {

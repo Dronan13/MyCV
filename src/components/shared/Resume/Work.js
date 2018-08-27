@@ -9,57 +9,57 @@ class Work extends Component {
         this.state = {
             items: []
         };
-        this.fetchData = this.fetchData.bind(this);
       }
 
     componentDidMount() 
     {
-        this.fetchData();
+        this.getItems();
     }
 
-    fetchData() {
+    getItems() {
         axios.get(cfg.baseURL+'api/work')
-          .then(function (response) {
-            //this.setState({items: response});
-            console.log(response);
+          .then(response => {
+            this.setState({items: response.data})
           })
           .catch(function (error) {
             console.log(error);
           })
-      }
+    }
+
+    printJobs(){
+        return this.state.items.map(item =>  {
+            return(
+                <div className="mb-2" key={item._id}>
+                    <div className="row">
+                        <div className="col-md-7 font-weight-bold">
+                            {item.company}
+                        </div>
+                        <div className="col-md-5 text-right">
+                            {item.country}, {item.city}
+                        </div>          
+                    </div> 
+                    <div className="row">
+                        <div className="col-md-7 font-italic">
+                            {item.job} 
+                        </div>
+                        <div className="col-md-5 text-right">
+                            {item.date_start} - {item.date_end}
+                        </div> 
+                    </div>
+                    <div className="row">
+                        <div className="col-md-12 text-justify">
+                            {item.description}
+                        </div>
+                    </div>  
+                </div>
+            );
+        })
+    }
 
     render() {
         return (
-            <div className="container bg-info"> 
-                <div className="mb-2">
-                <div className="row">
-                    <div className="col-md-12">
-                        <h5 className="font-weight-bold">WORK NAME</h5>
-                    </div>
-                </div> 
-                <div className="row">
-                    <div className="col-md-12 font-weight-bold">
-                        COMPANY
-                    </div>
-                </div>  
-                <div className="row">
-                    <div className="col-md-6">
-                        date.start - date.end
-                    </div>
-                    <div className="col-md-6 text-right">
-                        direction
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-md-12">
-                        <ul>
-                            <li>text 1</li>
-                            <li>text 2</li>
-                            <li>text 3</li>
-                        </ul>
-                    </div>
-                </div>  
-            </div>
+            <div className="container"> 
+                {this.printJobs()}
             </div>
         );
     }

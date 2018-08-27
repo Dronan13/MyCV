@@ -39,7 +39,8 @@ class Registration extends Component {
 
     componentWillReceiveProps(nextProps) {
         if(nextProps.auth.isAuthenticated) {
-            this.props.history.push('/')
+            //this.props.history.push('/') //in case of no modal
+            this.closePopUp();
         }
         if(nextProps.errors) {
             this.setState({
@@ -50,10 +51,14 @@ class Registration extends Component {
 
     componentDidMount() {
         if(this.props.auth.isAuthenticated) {
-            this.props.history.push('/');
+            //this.props.history.push('/') //in case of no modal
+            this.closePopUp();
         }
     }
 
+    closePopUp(){
+        document.getElementById("hidePopUpBtn").click();
+    }
 
     render() {
         const { errors } = this.state;

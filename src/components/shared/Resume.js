@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Work from './Resume/Work';
+import Education from './Resume/Education';
 
 class Resume extends Component {
     constructor() {
@@ -19,7 +21,9 @@ class Resume extends Component {
             <div className="container"> 
                 <h2>This is Resume</h2>
                 <div>
-                    Content of Resume
+                    <Work/>
+                    <br/>
+                    <Education/>
                 </div>                                     
             </div>
         );

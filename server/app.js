@@ -24,7 +24,7 @@ try {
     console.log(error)
 }
 
-let port = process.env.PORT
+let port = process.env.API_PORT
 
 
 /** set up middlewares */

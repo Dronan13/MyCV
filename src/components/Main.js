@@ -17,6 +17,9 @@ import CreateBook from './admin/CreateBook';
 import CreatePaper from './admin/CreatePaper';
 import CreateConference from './admin/CreateConference';
 import CreateWork from './admin/CreateWork';
+import CreateChapter from './admin/CreateChapter';
+import CreateEducation from './admin/CreateEducation';
+import CreateOwner from './admin/CreateOwner';
 
 class Main extends Component{ 
   render() { 
@@ -34,14 +37,16 @@ class Main extends Component{
         <Route exact path='/conferences' component={Conferences}></Route>
 
         <Route exact path='/me' component={Home}></Route>
-
+        
         <Route exact path='/admin/questions' component={Questions}></Route>
         <Route exact path='/admin/books' component={CreateBook}></Route>
+        <Route exact path='/admin/chapters' component={CreateChapter}></Route>
         <Route exact path='/admin/papers' component={CreatePaper}></Route>
         <Route exact path='/admin/confs' component={CreateConference}></Route>
         <Route exact path='/admin/users' component={Questions}></Route>
-        <Route exact path='/admin/edu' component={Questions}></Route>
+        <Route exact path='/admin/edu' component={CreateEducation}></Route>
         <Route exact path='/admin/work' component={CreateWork}></Route>
+        <Route exact path='/admin/owner' component={CreateOwner}></Route>
       </Switch>
     )}
 }

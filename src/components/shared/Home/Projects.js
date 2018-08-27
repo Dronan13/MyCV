@@ -13,7 +13,7 @@ class Projects extends Component {
                     <div className="row">
                         <div className="col-sm-4">
                         <div className="card">
-                            <img className="card-img-top" src={pr_img_1} alt="Card image cap"></img>
+                            <img className="card-img-top" src={pr_img_1} alt="First project"/>
                             <div className="card-body">
                                 <h5 className="card-title">Project information</h5>
                                     <h6 className="card-subtitle mb-2">Keywords</h6>
@@ -24,7 +24,7 @@ class Projects extends Component {
                         </div>
                         <div className="col-sm-4">
                         <div className="card">
-                            <img className="card-img-top" src={pr_img_2} alt="Card image cap"></img>
+                            <img className="card-img-top" src={pr_img_2} alt="Second project"/>
                             <div className="card-body">
                                 <h5 className="card-title">Project information</h5>
                                     <h6 className="card-subtitle mb-2">Keywords</h6>
@@ -35,7 +35,7 @@ class Projects extends Component {
                         </div>
                         <div className="col-sm-4">
                         <div className="card">
-                            <img className="card-img-top" src={pr_img_3} alt="Card image cap"></img>
+                            <img className="card-img-top" src={pr_img_3} alt="Therd project"/>
                             <div className="card-body">
                                 <h5 className="card-title">Project information</h5>
                                     <h6 className="card-subtitle mb-2">Keywords</h6>

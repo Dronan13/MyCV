@@ -7,7 +7,8 @@ let EducationSchema = new mongoose.Schema(
         date_end: String,
         country: String,
         city: String,
-        description:String
+        description:String,
+        gpa: String
     }
 );
 

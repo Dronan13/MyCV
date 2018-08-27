@@ -18,7 +18,7 @@ class Education extends Component {
     }
 
     fetchData() {
-        axios.get(cfg.baseURL+'api/work')
+        axios.get(cfg.baseURL+'api/edus')
           .then(function (response) {
             //this.setState({items: response});
             console.log(response);
@@ -34,29 +34,25 @@ class Education extends Component {
                 <div className="mb-2">
                 <div className="row">
                     <div className="col-md-12">
-                        <h5 className="font-weight-bold">WORK NAME</h5>
+                        <h5 className="font-weight-bold">EDUCATION DEGREE</h5>
                     </div>
                 </div> 
                 <div className="row">
-                    <div className="col-md-12 font-weight-bold">
-                        COMPANY
+                    <div className="col-md-6 font-weight-bold">
+                        UNIVERCITY
+                    </div>
+                    <div className="col-md-6">
+                        Country, city
                     </div>
                 </div>  
                 <div className="row">
-                    <div className="col-md-6">
+                    <div className="col-md-12">
                         date.start - date.end
-                    </div>
-                    <div className="col-md-6 text-right">
-                        direction
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-md-12">
-                        <ul>
-                            <li>text 1</li>
-                            <li>text 2</li>
-                            <li>text 3</li>
-                        </ul>
+                        description
                     </div>
                 </div>  
             </div>

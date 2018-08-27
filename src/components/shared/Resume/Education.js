@@ -31,23 +31,21 @@ class Education extends Component {
     render() {
         return (
             <div className="container bg-info"> 
-                <div className="mb-2">
+                <div className="mb-2"> 
                 <div className="row">
                     <div className="col-md-12">
-                        <h5 className="font-weight-bold">EDUCATION DEGREE</h5>
+                        <label className="font-weight-bold">Univercity</label> 
+                        <label >, Country, City</label>
                     </div>
-                </div> 
-                <div className="row">
-                    <div className="col-md-6 font-weight-bold">
-                        UNIVERCITY
-                    </div>
-                    <div className="col-md-6">
-                        Country, city
-                    </div>
-                </div>  
+                </div>
                 <div className="row">
                     <div className="col-md-12">
-                        date.start - date.end
+                        <label>date.start</label> - <label >date.end</label>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-12 font-italic">
+                        Education degree
                     </div>
                 </div>
                 <div className="row">

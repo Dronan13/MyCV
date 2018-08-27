@@ -36,38 +36,38 @@ module.exports = (router) => {
     router.put('/user/:id', requireAdmin, userctrl.update);
     router.delete('/user/:id', requireAdmin, userctrl.delete);
     
-    router.post('/paper', requireAdmin, paperctrl.getAll);
-    router.get('/paper', paperctrl.create);//
+    router.post('/paper', requireAdmin, paperctrl.create);
+    router.get('/paper', paperctrl.getAll);//
     router.get('/paper/:id', requireAdmin, paperctrl.getById);
     router.put('/paper', requireAdmin, paperctrl.update);
     router.delete('/paper', requireAdmin, paperctrl.delete);
     
-    router.post('/book', requireAdmin, bookctrl.getAll);
-    router.get('/book', bookctrl.create);//
+    router.post('/book', requireAdmin, bookctrl.create);
+    router.get('/book', bookctrl.getAll);//
     router.get('/book/:id', requireAdmin, bookctrl.getById);
     router.put('/book', requireAdmin, bookctrl.update);
     router.delete('/book', requireAdmin, bookctrl.delete);
     
-    router.post('/conf', requireAdmin, confctrl.getAll);
-    router.get('/conf', confctrl.create);//
+    router.post('/conf', requireAdmin, confctrl.create);
+    router.get('/conf', confctrl.getAll);//
     router.get('/conf/:id', requireAdmin, confctrl.getById);
     router.put('/conf', requireAdmin, confctrl.update);
     router.delete('/conf', requireAdmin, confctrl.delete);
 
-    router.post('/chapter', requireAdmin, chapterctrl.getAll);
-    router.get('/chapter', chapterctrl.create);//
+    router.post('/chapter', requireAdmin, chapterctrl.create);
+    router.get('/chapter', chapterctrl.getAll);//
     router.get('/chapter/:id', requireAdmin, chapterctrl.getById);
     router.put('/chapter', requireAdmin, chapterctrl.update);
     router.delete('/chapter', requireAdmin, chapterctrl.delete);
 
-    router.post('/edu', requireAdmin, eductrl.getAll);
-    router.get('/edu', eductrl.create);//
+    router.post('/edu', requireAdmin, eductrl.create);
+    router.get('/edu', eductrl.getAll);//
     router.get('/edu/:id', requireAdmin, eductrl.getById);
     router.put('/edu', requireAdmin, eductrl.update);
     router.delete('/edu', requireAdmin, eductrl.delete);
 
-    router.post('/work', requireAdmin, workctrl.getAll);
-    router.get('/work', workctrl.create);//
+    router.post('/work', requireAdmin, workctrl.create);
+    router.get('/work', workctrl.getAll);//
     router.get('/work/:id', requireAdmin, workctrl.getById);
     router.put('/work', requireAdmin, workctrl.update);
     router.delete('/work', requireAdmin, workctrl.delete);

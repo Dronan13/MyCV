@@ -11,7 +11,8 @@ function jwt() {
             // public routes that don't require authentication
             'api/login',
             'api/register',
-            'api/question'
+            'api/question',
+            //'api/work'
         ]
     })
     

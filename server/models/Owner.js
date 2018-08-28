@@ -2,8 +2,10 @@ const mongoose = require('mongoose')
 let OwnerSchema = new mongoose.Schema(
     {
         firstname: String,
-        middlename: String,    
+        middlename: String,
         lastname:String,
+        title: String,
+        description: String,
         email: String,
         phone_cell: String,
         phone_extra: String, 

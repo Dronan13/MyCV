@@ -75,7 +75,7 @@ module.exports = (router) => {
 
     router.post('/owner', requireAdmin, ownerctrl.create);
     router.get('/owner', ownerctrl.getAll);//
-    router.get('/owner/:id', requireAdmin, ownerctrl.getById);
+    router.get('/owner/:id', ownerctrl.getById);
     router.put('/owner', requireAdmin, ownerctrl.update);
     router.delete('/owner', requireAdmin, ownerctrl.delete);
 

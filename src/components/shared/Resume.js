@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Owner from './Resume/Owner';
+import Header from './Resume/Header';
 import Work from './Resume/Work';
 import Education from './Resume/Education';
 
@@ -22,7 +22,7 @@ class Resume extends Component {
             <div className="container"> 
                 <h3 className="text-center">Resume</h3>
                 <div>
-                    <Owner/>
+                    <Header/>
                     <br/>
                     <Work/>
                     <br/>

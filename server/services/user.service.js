@@ -37,6 +37,7 @@ async function authenticate(userLogin) {
         const payload = {
             sub: user.id,
             username: user.username,
+            email: user.email,
             permissions: user.role,      
         }   
 

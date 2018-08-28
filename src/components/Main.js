@@ -6,7 +6,7 @@ import Registration from './shared/Registration/Registration';
 import Login from './shared/Login/Login';
 import Resume from './shared/Resume';
 import Work from './shared/Resume/Work';
-import Owner from './shared/Resume/Owner';
+import Header from './shared/Resume/Header';
 import Education from './shared/Resume/Education';
 import Publications from './shared/Publications';
 import Papers from './shared/Publications/Papers';
@@ -36,7 +36,7 @@ class Main extends Component{
         <Route exact path='/papers' component={Papers}></Route>
         <Route exact path='/books' component={Books}></Route>
         <Route exact path='/conferences' component={Conferences}></Route>
-        <Route exact path='/owner' component={Owner}></Route>
+        <Route exact path='/owner' component={Header}></Route>
 
         <Route exact path='/me' component={Home}></Route>
         

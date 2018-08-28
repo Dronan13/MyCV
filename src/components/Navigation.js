@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Gravatar from 'react-gravatar'
 import { logoutUser } from '../actions/authentication';
 import { withRouter } from 'react-router-dom';
 
@@ -18,8 +19,8 @@ class Navigation extends Component{
 
     const authLinks = (
       <ul className="navbar-nav ml-auto">
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/me">{user.username}</NavLink>    
+          <li className="nav-item">           
+            <NavLink className="nav-link" to="/me"><Gravatar email={user.email} size={30} default="retro" className="rounded-circle"/> {user.username}</NavLink>    
           </li>
           <li className="nav-item">
             <a className="nav-link text-danger" onClick={this.onLogout.bind(this)}>Logout</a>   

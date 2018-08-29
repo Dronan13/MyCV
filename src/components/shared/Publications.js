@@ -8,10 +8,7 @@ class Publications extends Component {
     render() {
         return (
             <div className="container"> 
-                <h2>This is Publications</h2>
-                <div>
-                    Content of Publications
-                </div>   
+                <h2 className="text-center">Publications</h2>  
                 <Papers/>
                 <Conferences/>
                 <Books/>

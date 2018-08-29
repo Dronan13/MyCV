@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import cfg from '../../config/cfg'
+import cfg from '../../config/cfg';
 
 class Education extends Component {
     constructor() {
@@ -30,7 +30,7 @@ class Education extends Component {
       printJobs(){
         return this.state.items.map(item =>  {
             return(
-                <div className="mb-2" key={item._id}>
+                    <div className="mb-2" key={item._id}>
                         <div className="row">
                             <div className="col-md-7 font-weight-bold">
                                 {item.university}

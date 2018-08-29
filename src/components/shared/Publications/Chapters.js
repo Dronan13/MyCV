@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 
-class Conferences extends Component {
+class Chapters extends Component {
     render() {
         return (
             <div> 
-                <h2>This is Conferences</h2>
+                <h2>This is Books</h2>
                 <div>
-                    Content of Conferences
+                    Content of Chapters
                 </div>                                     
             </div>
         );
     }
 }
-export default Conferences;
+export default Chapters;

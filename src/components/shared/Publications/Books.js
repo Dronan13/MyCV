@@ -16,12 +16,13 @@ class Books extends Component {
 
     render() {
         return (
-            <div className="container"> 
+            <div>
                 <h2>This is Books</h2>
                 <div>
                     Content of Books
-                </div>                                     
+                </div> 
             </div>
+                                                    
         );
     }
 }

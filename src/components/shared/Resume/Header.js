@@ -65,12 +65,12 @@ class Header extends Component {
     
     render() {
         return (
-            <div className="container"> 
+            <div> 
                 <div className="mb-2" key={this.state._id}>
                     <div className="row">
                         <div className="col-md-6">
                             <div className="row">
-                                <div className="col-12"><h3>{this.state.firstname} {this.state.lastname}</h3></div>
+                                <div className="col-12"><h3>{this.state.firstname} ({this.state.middlename}) {this.state.lastname}</h3></div>
                             </div>
                             <div className="row">
                                 <div className="col-12 font-weight-bold"><h4>{this.state.title}</h4></div>

@@ -56,7 +56,7 @@ class Education extends Component {
 
     render() {
         return (
-            <div className="container"> 
+            <div> 
                 {this.printJobs()}
             </div>
         );

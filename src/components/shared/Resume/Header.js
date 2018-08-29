@@ -91,11 +91,11 @@ class Header extends Component {
                     <br/>
                     <div className="row bg-dark text-white pt-2 pb-2">
                         <div className="col-md-3"><i className="fas fa-envelope"></i> {this.state.email}</div>
-                        <div className="col-md-3"><i class="fas fa-phone"></i> {this.state.phone_cell}</div>
+                        <div className="col-md-3"><i className="fas fa-phone"></i> {this.state.phone_cell}</div>
                         <div className="col-md-4">
                             <i className="fab fa-linkedin"></i> {this.state.linkedin_url}
                         </div>
-                        <div className="col-md-2"><i class="fab fa-skype"></i> {this.state.skype}</div>
+                        <div className="col-md-2"><i className="fab fa-skype"></i> {this.state.skype}</div>
                     </div>
                     <br/>
                     <div className="row">

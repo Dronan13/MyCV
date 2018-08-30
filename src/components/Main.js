@@ -5,13 +5,7 @@ import Home from './shared/Home';
 import Registration from './shared/Registration/Registration';
 import Login from './shared/Login/Login';
 import Resume from './shared/Resume';
-import Work from './shared/Resume/Work';
-import Header from './shared/Resume/Header';
-import Education from './shared/Resume/Education';
 import Publications from './shared/Publications';
-import Papers from './shared/Publications/Papers';
-import Books from './shared/Publications/Books';
-import Conferences from './shared/Publications/Conferences';
 
 import Questions from './admin/Questions';
 import CreateBook from './admin/CreateBook';
@@ -30,16 +24,8 @@ class Main extends Component{
         <Route exact path='/registration' component={Registration}></Route>
         <Route exact path='/login' component={Login}></Route>
         <Route exact path='/resume' component={Resume}></Route>
-        <Route exact path='/education' component={Education}></Route>
-        <Route exact path='/work' component={Work}></Route>
         <Route exact path='/publications' component={Publications}></Route>
-        <Route exact path='/papers' component={Papers}></Route>
-        <Route exact path='/books' component={Books}></Route>
-        <Route exact path='/conferences' component={Conferences}></Route>
-        <Route exact path='/owner' component={Header}></Route>
-
-        <Route exact path='/me' component={Home}></Route>
-        
+              
         <Route exact path='/admin/questions' component={Questions}></Route>
         <Route exact path='/admin/books' component={CreateBook}></Route>
         <Route exact path='/admin/chapters' component={CreateChapter}></Route>
@@ -52,5 +38,20 @@ class Main extends Component{
       </Switch>
     )}
 }
+/*
+import Work from './shared/Resume/Work';
+import Header from './shared/Resume/Header';
+import Education from './shared/Resume/Education';
+import Papers from './shared/Publications/Papers';
+import Books from './shared/Publications/Books';
+import Conferences from './shared/Publications/Conferences';
 
+        <Route exact path='/education' component={Education}></Route>
+        <Route exact path='/work' component={Work}></Route>
+        <Route exact path='/papers' component={Papers}></Route>
+        <Route exact path='/books' component={Books}></Route>
+        <Route exact path='/conferences' component={Conferences}></Route>
+        <Route exact path='/owner' component={Header}></Route>
+        <Route exact path='/me' component={Home}></Route>
+*/
 export default Main;

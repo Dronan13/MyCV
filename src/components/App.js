@@ -40,12 +40,13 @@ class App extends Component{
               <Main />
             </div>
 
-          <LoginModal/>
-          <RegistrationModal/>
+            <LoginModal/>
+            <RegistrationModal/>
           
         </div>
       </Provider>      
     )}
 }
+
 
 export default App;

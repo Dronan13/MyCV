@@ -40,7 +40,7 @@ class CreateConference extends Component {
             volume: this.state.volume,
             year: this.state.year,
             publisher: this.state.publisher,  
-            pages: this.state.publisher,                 
+            pages: this.state.pages,                 
             issn: this.state.issn,
             doi: this.state.doi,
             url:this.state.url,    
@@ -104,10 +104,9 @@ class CreateConference extends Component {
 
                                 <div className="col-md-3">
                                     <div className="form-group">
-                                        <label htmlFor="form_vol">Volume *</label>
+                                        <label htmlFor="form_vol">Volume</label>
                                         <input id="form_vol" type="text" name="volume" 
                                         className='form-control'
-                                        required="required" data-error="Vol. is required."
                                         onChange={ this.handleInputChange }
                                         value={ this.state.volume }   />
                                         <div className="help-block with-errors"></div>
@@ -154,10 +153,9 @@ class CreateConference extends Component {
                             <div className="row">                               
                                 <div className="col-md-4">
                                     <div className="form-group">
-                                        <label htmlFor="form_issn">ISSN *</label>
+                                        <label htmlFor="form_issn">ISSN</label>
                                         <input id="form_issn" type="text" name="issn" 
                                         className='form-control'
-                                        required="required" data-error="ISSN is required."
                                         onChange={ this.handleInputChange }
                                         value={ this.state.issn }   />
                                     <div className="help-block with-errors"></div>
@@ -165,10 +163,9 @@ class CreateConference extends Component {
                                 </div>                             
                                 <div className="col-md-4">
                                     <div className="form-group">
-                                        <label htmlFor="form_doi">DOI *</label>
+                                        <label htmlFor="form_doi">DOI</label>
                                         <input id="form_doi" type="text" name="doi" 
                                         className='form-control'
-                                        required="required" data-error="DOI is required."
                                         onChange={ this.handleInputChange }
                                         value={ this.state.doi }   />
                                     <div className="help-block with-errors"></div>
@@ -176,10 +173,9 @@ class CreateConference extends Component {
                                 </div>   
                                 <div className="col-md-4">
                                     <div className="form-group">
-                                        <label htmlFor="form_url">URL *</label>
+                                        <label htmlFor="form_url">URL</label>
                                         <input id="form_url" type="text" name="url" 
                                         className='form-control'
-                                        required="required" data-error="URL is required."
                                         onChange={ this.handleInputChange }
                                         value={ this.state.url}   />
                                     <div className="help-block with-errors"></div>

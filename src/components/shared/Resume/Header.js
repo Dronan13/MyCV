@@ -99,7 +99,7 @@ class Header extends Component {
                     </div>
                     <br/>
                     <div className="row">
-                        <div className="col-md-12"><h4>SKILLS</h4></div>
+                        <div className="col-md-12"><h4>Skills</h4></div>
                     </div>
                     <div className="row">
                         <div className="col-md-12">{this.state.skills}</div>

@@ -38,7 +38,7 @@ class CreateBook extends Component {
             year: this.state.year,
             city: this.state.city,
             publisher: this.state.publisher,  
-            pages: this.state.publisher,                 
+            pages: this.state.pages,                 
             issn: this.state.issn,
             doi: this.state.doi,
             url:this.state.url,    

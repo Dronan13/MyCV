@@ -30,10 +30,20 @@ class Books extends Component {
     printItems(){
         return this.state.items.map(item =>  {
             return(
+                <div className="text-justify" key={item._id}>
                     <div className="mb-2" key={item._id}>
                         {item.authors}, {item.title}, {item.journal} {item.volume}
                         ({item.year}) {item.pages}pp.
                     </div>
+                    <button type="button" className="btn btn-link"
+                    data-toggle="collapse" data-target={"#collapseAbstract_" + item._id} 
+                    aria-expanded="false" aria-controls="collapseExample">
+                        More
+                    </button>
+                    <div className="collapse" id={"collapseAbstract_" + item._id} >
+                        {item.abstract}
+                    </div>
+                </div>
             );
         })
     }

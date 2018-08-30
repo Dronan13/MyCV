@@ -31,7 +31,7 @@ class Papers extends Component {
         return this.state.items.map(item =>  {
             return(
                 <div className="text-justify" key={item._id}>
-                    <div className="mb-2" >
+                    <div>
                         {item.authors}, {item.title}, {item.journal} {item.volume} {item.issue ? '('+item.issue+')' : ''} ({item.year}) pp. {item.pages}
 
                         <button type="button" className="btn btn-link"
@@ -40,7 +40,7 @@ class Papers extends Component {
                             More
                         </button>
                     </div>
-                    <div className="collapse" id={"collapseAbstract_" + item._id} >
+                    <div className="collapse mb-2 p-2 bg-abstract border rounded" id={"collapseAbstract_" + item._id} >
                         <div className="font-weight-bold">Keywords:</div> <div>{item.keywords}</div>
                         <div className="font-weight-bold">Abstract:</div><div>{item.abstract}</div>
                     </div>

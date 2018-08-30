@@ -30,19 +30,15 @@ class App extends Component{
   render() { 
     return (    
       <Provider store = { store }>
-        <div>         
-            
+        <div>                
             <div>
               <Navigation />          
             </div>
-
             <div>
               <Main />
             </div>
-
             <LoginModal/>
             <RegistrationModal/>
-          
         </div>
       </Provider>      
     )}

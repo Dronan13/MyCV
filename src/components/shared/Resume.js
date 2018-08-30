@@ -4,19 +4,6 @@ import Work from './Resume/Work';
 import Education from './Resume/Education';
 
 class Resume extends Component {
-    constructor() {
-   
-        super();
-        this.state = 
-        {
-            'heroes_total': '',    
-        };
-      }
-
-    componentDidMount() 
-    {
-    }
-
     render() {
         return (
             <div className="container"> 

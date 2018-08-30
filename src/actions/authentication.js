@@ -7,7 +7,7 @@ import cfg from '../components/config/cfg'
 
 export const registerUser = (user, history) => dispatch => {
     axios.post(cfg.baseURL+'api/register', user)
-            .then(res => history.push('/login'))
+            .then(res => history.push('/'))
             .catch(err => {
                 dispatch({
                     type: GET_ERRORS,
@@ -41,7 +41,7 @@ export const logoutUser = (history) => dispatch => {
     setAuthToken(false);
     setAuthUser(false);
     dispatch(setCurrentUser({}));
-    //history.push('/');
+    history.push('/');
 }
 
 

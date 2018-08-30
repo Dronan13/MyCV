@@ -39,7 +39,7 @@ class Chapters extends Component {
                     aria-expanded="false" aria-controls="collapseExample">
                         More
                     </button>
-                    <div className="collapse" id={"collapseAbstract_" + item._id} >
+                    <div className="collapse mb-2 p-2 bg-abstract border rounded" id={"collapseAbstract_" + item._id} >
                         <div className="font-weight-bold">Keywords:</div> <div>{item.keywords}</div>
                         <div className="font-weight-bold">Abstract:</div><div>{item.abstract}</div>
                     </div>

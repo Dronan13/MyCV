@@ -13,9 +13,10 @@ async function create(data) {
     const job = new Job(data);
     await job.save();
 }
- 
+
 async function getAll() {
-    return await Job.find();
+    var sort = { _id: -1 };
+    return await Job.find().sort(sort);
 }
  
 async function getById(id) {

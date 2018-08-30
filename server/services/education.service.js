@@ -14,7 +14,8 @@ async function create(data) {
 }
  
 async function getAll() {
-    return await Edu.find();
+    var sort = { _id: -1 };
+    return await Edu.find().sort(sort);;
 }
  
 async function getById(id) {

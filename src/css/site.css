@@ -119,6 +119,13 @@ body {
     margin-bottom: 20px;
   }
 
+  .if-gmaps{
+    height: 100%;
+    width: 100%;
+    resize: both;
+    overflow: auto;
+  }
+
   @media only screen and (max-device-width: 1024px) {
       .bgimg-1, .bgimg-2, .bgimg-3, .bgimg-5 {
           background-attachment: scroll;

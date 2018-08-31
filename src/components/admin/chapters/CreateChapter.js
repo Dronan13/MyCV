@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import cfg from '../config/cfg';
+import cfg from '../../config/cfg';
 
-class CreateConference extends Component {
+class CreateChapter extends Component {
     constructor() {
    
         super();
         this.state = {
             title:'',
+            book_title:'',
             authors:'',
-            conference: '',
-            volume: '',
             year: '',
+            city: '',
             publisher: '',  
             pages: '',                  
             issn: '',
@@ -35,10 +35,10 @@ class CreateConference extends Component {
         e.preventDefault();
         const data = {
             title: this.state.title,
+            book_title: this.state.book_title,
             authors: this.state.authors,
-            conference: this.state.conference,
-            volume: this.state.volume,
             year: this.state.year,
+            city: this.state.city,
             publisher: this.state.publisher,  
             pages: this.state.pages,                 
             issn: this.state.issn,
@@ -48,7 +48,7 @@ class CreateConference extends Component {
             keywords:this.state.keywords
             }
         
-        axios.post(cfg.baseURL+'api/conf', data)
+        axios.post(cfg.baseURL+'api/chapter', data)
             .catch(err => {console.log(err)});
        } 
     
@@ -56,13 +56,13 @@ class CreateConference extends Component {
         return (
                 <div className='box-text'>
                     <div className='container'>
-                        <h3 className='text-center'>ADD CONFERENCE PAPER</h3>
+                        <h3 className='text-center'>ADD BOOK CHAPTER</h3>
                         <form id="contact-form" onSubmit={ this.handleSubmit }>
 
                         <div className="messages"></div>
                     
                         <div className="controls">
-                        <div className="row">
+                            <div className="row">
                                 <div className="col-md-12">
                                     <div className="form-group">
                                         <label htmlFor="form_title">Title *</label>
@@ -71,6 +71,19 @@ class CreateConference extends Component {
                                         required="required" data-error="Authors are required."
                                         onChange={ this.handleInputChange }
                                         value={ this.state.title }   />
+                                    <div className="help-block with-errors"></div>
+                                    </div>
+                                </div>                                
+                            </div>
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <div className="form-group">
+                                        <label htmlFor="form_title">Book *</label>
+                                        <input id="form_title" type="text" name="book_title" 
+                                        className='form-control'
+                                        required="required" data-error="Authors are required."
+                                        onChange={ this.handleInputChange }
+                                        value={ this.state.book_title }   />
                                     <div className="help-block with-errors"></div>
                                     </div>
                                 </div>                                
@@ -90,43 +103,7 @@ class CreateConference extends Component {
                             </div>
 
                             <div className="row">
-                                <div className="col-md-9">
-                                    <div className="form-group">
-                                        <label htmlFor="form_conference">Conference *</label>
-                                        <input id="form_conference" type="text" name="conference" 
-                                        className='form-control'
-                                        required="required" data-error="Conference are required."
-                                        onChange={ this.handleInputChange }
-                                        value={ this.state.conference }/>
-                                    <div className="help-block with-errors"></div>
-                                    </div>
-                                </div>                     
-
-                                <div className="col-md-3">
-                                    <div className="form-group">
-                                        <label htmlFor="form_vol">Volume</label>
-                                        <input id="form_vol" type="text" name="volume" 
-                                        className='form-control'
-                                        onChange={ this.handleInputChange }
-                                        value={ this.state.volume }   />
-                                        <div className="help-block with-errors"></div>
-                                    </div>
-                                </div>                 
-                            </div>
-
-                            <div className="row">
-                                <div className="col-md-6">
-                                    <div className="form-group">
-                                        <label htmlFor="form_publisher">Publisher *</label>
-                                        <input id="form_publisher" type="text" name="publisher" 
-                                        className='form-control'
-                                        required="required" data-error="Publisher is required."
-                                        onChange={ this.handleInputChange }
-                                        value={ this.state.publisher }   />
-                                    <div className="help-block with-errors"></div>
-                                    </div>
-                                </div>   
-                                <div className="col-md-3">
+                                <div className="col-md-4">
                                     <div className="form-group">
                                         <label htmlFor="form_year">Year *</label>
                                         <input id="form_year" type="text" name="year" 
@@ -136,8 +113,34 @@ class CreateConference extends Component {
                                         value={ this.state.year }/>
                                     <div className="help-block with-errors"></div>
                                     </div>
-                                </div>                       
-                                <div className="col-md-3">
+                                </div>                     
+
+                                <div className="col-md-4">
+                                    <div className="form-group">
+                                        <label htmlFor="form_city">City</label>
+                                        <input id="form_city" type="text" name="city" 
+                                        className='form-control'
+                                        onChange={ this.handleInputChange }
+                                        value={ this.state.city }   />
+                                    <div className="help-block with-errors"></div>
+                                    </div>
+                                </div>       
+
+                                <div className="col-md-4">
+                                    <div className="form-group">
+                                        <label htmlFor="form_publisher">Publisher *</label>
+                                        <input id="form_publisher" type="text" name="publisher" 
+                                        className='form-control'
+                                        required="required" data-error="Publisher is required."
+                                        onChange={ this.handleInputChange }
+                                        value={ this.state.publisher }   />
+                                    <div className="help-block with-errors"></div>
+                                    </div>
+                                </div>           
+                            </div>
+
+                            <div className="row">
+                                <div className="col-md-6">
                                     <div className="form-group">
                                         <label htmlFor="form_pages">Pages *</label>
                                         <input id="form_pages" type="text" name="pages" 
@@ -147,11 +150,8 @@ class CreateConference extends Component {
                                         value={ this.state.pages }   />
                                     <div className="help-block with-errors"></div>
                                     </div>
-                                </div>                                          
-                            </div>
-
-                            <div className="row">                               
-                                <div className="col-md-4">
+                                </div>   
+                                <div className="col-md-6">
                                     <div className="form-group">
                                         <label htmlFor="form_issn">ISSN</label>
                                         <input id="form_issn" type="text" name="issn" 
@@ -161,7 +161,10 @@ class CreateConference extends Component {
                                     <div className="help-block with-errors"></div>
                                     </div>
                                 </div>                             
-                                <div className="col-md-4">
+                            </div>
+
+                            <div className="row">
+                                <div className="col-md-6">
                                     <div className="form-group">
                                         <label htmlFor="form_doi">DOI</label>
                                         <input id="form_doi" type="text" name="doi" 
@@ -171,7 +174,7 @@ class CreateConference extends Component {
                                     <div className="help-block with-errors"></div>
                                     </div>
                                 </div>   
-                                <div className="col-md-4">
+                                <div className="col-md-6">
                                     <div className="form-group">
                                         <label htmlFor="form_url">URL</label>
                                         <input id="form_url" type="text" name="url" 
@@ -224,4 +227,4 @@ class CreateConference extends Component {
 }
 
 
-export default CreateConference;
+export default CreateChapter;

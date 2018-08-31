@@ -8,13 +8,13 @@ import Resume from './shared/Resume';
 import Publications from './shared/Publications';
 
 import Questions from './admin/Questions';
-import CreateBook from './admin/CreateBook';
-import CreatePaper from './admin/CreatePaper';
-import CreateConference from './admin/CreateConference';
-import CreateWork from './admin/CreateWork';
-import CreateChapter from './admin/CreateChapter';
-import CreateEducation from './admin/CreateEducation';
-import CreateOwner from './admin/CreateOwner';
+import CreateBook from './admin/books/CreateBook';
+import CreatePaper from './admin/papers/CreatePaper';
+import CreateConference from './admin/conferences/CreateConference';
+import CreateWork from './admin/work/CreateWork';
+import CreateChapter from './admin/chapters/CreateChapter';
+import CreateEducation from './admin/education/CreateEducation';
+import CreateOwner from './admin/owners/CreateOwner';
 
 class Main extends Component{ 
   render() { 

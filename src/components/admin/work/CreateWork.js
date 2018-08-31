@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import cfg from '../config/cfg';
+import cfg from '../../config/cfg';
 
-class CreateEducation extends Component {
+class CreateWork extends Component {
     constructor() {
    
         super();
         this.state = {
-            title: '', 
-            university: '',           
+            job: '', 
+            company: '',           
             date_start: '',
             date_end: '',
             country: '',
-            city: '',         
+            city: '',
+            description:''         
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -28,23 +29,24 @@ class CreateEducation extends Component {
      handleSubmit(e) {
         e.preventDefault();
         const data = {
-            title: this.state.title,
-            university: this.state.university,
+            job: this.state.job,
+            company: this.state.company,
             date_start: this.state.date_start,
             date_end: this.state.date_end,
             country: this.state.country,
-            city: this.state.city,   
+            city: this.state.city,
+            description: this.state.description,  
             }
         
-        axios.post(cfg.baseURL+'api/edu', data)
+        axios.post(cfg.baseURL+'api/work', data)
             .catch(err => {console.log(err)});
-    } 
-
-    render() {
+       } 
+    
+     render() {
         return (
                 <div className='box-text'>
                     <div className='container'>
-                        <h3 className='text-center'>ADD EDUCATION</h3>
+                        <h3 className='text-center'>ADD JOB DESCRIPTION</h3>
                         <form id="contact-form" onSubmit={ this.handleSubmit }>
                             <div className="messages"></div>        
                             <div className="controls">
@@ -52,28 +54,28 @@ class CreateEducation extends Component {
                                     <div className="col-md-12">
                                         <div className="form-group">
                                             <label htmlFor="form_tit">Title *</label>
-                                            <input id="form_tit" type="text" name="title" 
+                                            <input id="form_tit" type="text" name="job" 
                                             className='form-control'
                                             required="required" data-error="Title is required."
                                             onChange={ this.handleInputChange }
                                             value={ this.state.title }   />
                                         <div className="help-block with-errors"></div>
                                         </div>
-                                    </div>        
+                                    </div>    
                                 </div>
                                 <div className="row">
-                                    <div className="col-md-8">
+                                    <div className="col-md-6">
                                         <div className="form-group">
-                                            <label htmlFor="form_comp">University *</label>
-                                            <input id="form_comp" type="text" name="university" 
+                                            <label htmlFor="form_comp">Company *</label>
+                                            <input id="form_comp" type="text" name="company" 
                                             className='form-control'
                                             required="required" data-error="Company is required."
                                             onChange={ this.handleInputChange }
-                                            value={ this.state.university }   />
+                                            value={ this.state.company }   />
                                         <div className="help-block with-errors"></div>
                                         </div>
                                     </div>    
-                                    <div className="col-md-2">
+                                    <div className="col-md-3">
                                         <div className="form-group">
                                             <label htmlFor="form_country">Country *</label>
                                             <input id="form_country" type="text" name="country" 
@@ -84,7 +86,7 @@ class CreateEducation extends Component {
                                         <div className="help-block with-errors"></div>
                                         </div>
                                     </div> 
-                                    <div className="col-md-2">
+                                    <div className="col-md-3">
                                         <div className="form-group">
                                             <label htmlFor="form_city">City *</label>
                                             <input id="form_city" type="text" name="city" 
@@ -120,6 +122,19 @@ class CreateEducation extends Component {
                                         </div>
                                     </div>    
                                 </div>
+                                <div className="row">
+                                    <div className="col-md-12">
+                                        <div className="form-group">
+                                            <label htmlFor="form_desc">Description *</label>
+                                            <textarea id="form_desc" type="text" name="description" 
+                                            className='form-control'rows="10" 
+                                            required="required" data-error="Description is required."
+                                            onChange={ this.handleInputChange }
+                                            value={ this.state.description }   />
+                                        <div className="help-block with-errors"></div>
+                                        </div>
+                                    </div>    
+                                </div>
                                 <div className="form-group">
                                     <button type="submit" className="btn btn-primary float-right">
                                         ADD
@@ -132,4 +147,6 @@ class CreateEducation extends Component {
         );
     }
 }
-export default CreateEducation;
+
+
+export default CreateWork;

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import cfg from '../../config/cfg';
 
 class Papers extends Component {
@@ -26,8 +29,13 @@ class Papers extends Component {
           .catch(function (error) {
             console.log(error);
           })
-      }
+    }
+
     printItems(){
+        const {isAuthenticated, user} = this.props.auth;
+        const adminLinks = (
+            <button type="button" class="btn btn-secondary btn-sm">Update</button>
+          )
         return this.state.items.map(item =>  {
             return(
                 <div className="text-justify" key={item._id}>
@@ -39,6 +47,7 @@ class Papers extends Component {
                                 aria-expanded="false" aria-controls="collapseExample">
                             More
                         </button>
+                        {user.permissions === 'admin' ? adminLinks : ''}
                     </div>
                     <div className="collapse mb-2 p-2 bg-abstract border rounded" id={"collapseAbstract_" + item._id} >
                         <div className="font-weight-bold">Keywords:</div> <div>{item.keywords}</div>
@@ -64,4 +73,14 @@ class Papers extends Component {
         
     }
 }
-export default Papers;
+
+Papers.propTypes = {
+    logoutUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired
+  }
+  
+  const mapStateToProps = (state) => ({
+    auth: state.auth
+  })
+
+  export default connect(mapStateToProps)(withRouter(Papers));

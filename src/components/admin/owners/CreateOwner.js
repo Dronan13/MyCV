@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import cfg from '../config/cfg';
+import cfg from '../../config/cfg';
 
 class CreateChapter extends Component {
     constructor() {

@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import cfg from '../config/cfg';
+import cfg from '../../config/cfg';
 
-class CreateBook extends Component {
+class CreatePaper extends Component {
     constructor() {
    
         super();
         this.state = {
             title:'',
             authors:'',
+            journal: '',
+            volume: '',
+            issue: '',
             year: '',
-            city: '',
             publisher: '',  
             pages: '',                  
             issn: '',
@@ -35,10 +37,12 @@ class CreateBook extends Component {
         const data = {
             title: this.state.title,
             authors: this.state.authors,
+            journal: this.state.journal,
+            volume: this.state.volume,
+            issue: this.state.issue,
             year: this.state.year,
-            city: this.state.city,
             publisher: this.state.publisher,  
-            pages: this.state.pages,                 
+            pages: this.state.publisher,                 
             issn: this.state.issn,
             doi: this.state.doi,
             url:this.state.url,    
@@ -46,7 +50,7 @@ class CreateBook extends Component {
             keywords:this.state.keywords
             }
         
-        axios.post(cfg.baseURL+'api/book', data)
+        axios.post(cfg.baseURL+'api/paper', data)
             .catch(err => {console.log(err)});
        } 
     
@@ -54,13 +58,13 @@ class CreateBook extends Component {
         return (
                 <div className='box-text'>
                     <div className='container'>
-                        <h3 className='text-center'>ADD BOOK</h3>
+                        <h3 className='text-center'>ADD JOURNAL ARTICLE</h3>
                         <form id="contact-form" onSubmit={ this.handleSubmit }>
 
                         <div className="messages"></div>
                     
                         <div className="controls">
-                            <div className="row">
+                        <div className="row">
                                 <div className="col-md-12">
                                     <div className="form-group">
                                         <label htmlFor="form_title">Title *</label>
@@ -88,31 +92,45 @@ class CreateBook extends Component {
                             </div>
 
                             <div className="row">
-                                <div className="col-md-4">
+                                <div className="col-md-6">
                                     <div className="form-group">
-                                        <label htmlFor="form_year">Year *</label>
-                                        <input id="form_year" type="text" name="year" 
+                                        <label htmlFor="form_journal">Journal *</label>
+                                        <input id="form_journal" type="text" name="journal" 
                                         className='form-control'
-                                        required="required" data-error="Year are required."
+                                        required="required" data-error="Journal are required."
                                         onChange={ this.handleInputChange }
-                                        value={ this.state.year }/>
+                                        value={ this.state.journal }/>
                                     <div className="help-block with-errors"></div>
                                     </div>
                                 </div>                     
 
-                                <div className="col-md-4">
+                                <div className="col-md-3">
                                     <div className="form-group">
-                                        <label htmlFor="form_city">City *</label>
-                                        <input id="form_city" type="text" name="city" 
+                                        <label htmlFor="form_vol">Volume *</label>
+                                        <input id="form_vol" type="text" name="volume" 
                                         className='form-control'
-                                        required="required" data-error="City is required."
+                                        required="required" data-error="Vol. is required."
                                         onChange={ this.handleInputChange }
-                                        value={ this.state.city }   />
-                                    <div className="help-block with-errors"></div>
+                                        value={ this.state.volume }   />
+                                        <div className="help-block with-errors"></div>
                                     </div>
                                 </div>       
 
-                                <div className="col-md-4">
+                                <div className="col-md-3">
+                                    <div className="form-group">
+                                        <label htmlFor="form_issue">Issue *</label>
+                                        <input id="form_issue" type="text" name="issue" 
+                                        className='form-control'
+                                        required="required" data-error="Issue is required."
+                                        onChange={ this.handleInputChange }
+                                        value={ this.state.issue }   />
+                                        <div className="help-block with-errors"></div>
+                                    </div>
+                                </div>           
+                            </div>
+
+                            <div className="row">
+                                <div className="col-md-6">
                                     <div className="form-group">
                                         <label htmlFor="form_publisher">Publisher *</label>
                                         <input id="form_publisher" type="text" name="publisher" 
@@ -122,11 +140,19 @@ class CreateBook extends Component {
                                         value={ this.state.publisher }   />
                                     <div className="help-block with-errors"></div>
                                     </div>
-                                </div>           
-                            </div>
-
-                            <div className="row">
-                                <div className="col-md-6">
+                                </div>   
+                                <div className="col-md-3">
+                                    <div className="form-group">
+                                        <label htmlFor="form_year">Year *</label>
+                                        <input id="form_year" type="text" name="year" 
+                                        className='form-control'
+                                        required="required" data-error="Year are required."
+                                        onChange={ this.handleInputChange }
+                                        value={ this.state.year }/>
+                                    <div className="help-block with-errors"></div>
+                                    </div>
+                                </div>                       
+                                <div className="col-md-3">
                                     <div className="form-group">
                                         <label htmlFor="form_pages">Pages *</label>
                                         <input id="form_pages" type="text" name="pages" 
@@ -136,8 +162,11 @@ class CreateBook extends Component {
                                         value={ this.state.pages }   />
                                     <div className="help-block with-errors"></div>
                                     </div>
-                                </div>   
-                                <div className="col-md-6">
+                                </div>                                          
+                            </div>
+
+                            <div className="row">                               
+                                <div className="col-md-4">
                                     <div className="form-group">
                                         <label htmlFor="form_issn">ISSN *</label>
                                         <input id="form_issn" type="text" name="issn" 
@@ -148,10 +177,7 @@ class CreateBook extends Component {
                                     <div className="help-block with-errors"></div>
                                     </div>
                                 </div>                             
-                            </div>
-
-                            <div className="row">
-                                <div className="col-md-6">
+                                <div className="col-md-4">
                                     <div className="form-group">
                                         <label htmlFor="form_doi">DOI *</label>
                                         <input id="form_doi" type="text" name="doi" 
@@ -162,7 +188,7 @@ class CreateBook extends Component {
                                     <div className="help-block with-errors"></div>
                                     </div>
                                 </div>   
-                                <div className="col-md-6">
+                                <div className="col-md-4">
                                     <div className="form-group">
                                         <label htmlFor="form_url">URL *</label>
                                         <input id="form_url" type="text" name="url" 
@@ -216,4 +242,4 @@ class CreateBook extends Component {
 }
 
 
-export default CreateBook;
+export default CreatePaper;

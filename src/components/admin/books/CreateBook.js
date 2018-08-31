@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import cfg from '../config/cfg';
+import cfg from '../../config/cfg';
 
-class CreateChapter extends Component {
+class CreateBook extends Component {
     constructor() {
    
         super();
         this.state = {
             title:'',
-            book_title:'',
             authors:'',
             year: '',
             city: '',
@@ -35,7 +34,6 @@ class CreateChapter extends Component {
         e.preventDefault();
         const data = {
             title: this.state.title,
-            book_title: this.state.book_title,
             authors: this.state.authors,
             year: this.state.year,
             city: this.state.city,
@@ -48,7 +46,7 @@ class CreateChapter extends Component {
             keywords:this.state.keywords
             }
         
-        axios.post(cfg.baseURL+'api/chapter', data)
+        axios.post(cfg.baseURL+'api/book', data)
             .catch(err => {console.log(err)});
        } 
     
@@ -56,7 +54,7 @@ class CreateChapter extends Component {
         return (
                 <div className='box-text'>
                     <div className='container'>
-                        <h3 className='text-center'>ADD BOOK CHAPTER</h3>
+                        <h3 className='text-center'>ADD BOOK</h3>
                         <form id="contact-form" onSubmit={ this.handleSubmit }>
 
                         <div className="messages"></div>
@@ -71,19 +69,6 @@ class CreateChapter extends Component {
                                         required="required" data-error="Authors are required."
                                         onChange={ this.handleInputChange }
                                         value={ this.state.title }   />
-                                    <div className="help-block with-errors"></div>
-                                    </div>
-                                </div>                                
-                            </div>
-                            <div className="row">
-                                <div className="col-md-12">
-                                    <div className="form-group">
-                                        <label htmlFor="form_title">Book *</label>
-                                        <input id="form_title" type="text" name="book_title" 
-                                        className='form-control'
-                                        required="required" data-error="Authors are required."
-                                        onChange={ this.handleInputChange }
-                                        value={ this.state.book_title }   />
                                     <div className="help-block with-errors"></div>
                                     </div>
                                 </div>                                
@@ -117,9 +102,10 @@ class CreateChapter extends Component {
 
                                 <div className="col-md-4">
                                     <div className="form-group">
-                                        <label htmlFor="form_city">City</label>
+                                        <label htmlFor="form_city">City *</label>
                                         <input id="form_city" type="text" name="city" 
                                         className='form-control'
+                                        required="required" data-error="City is required."
                                         onChange={ this.handleInputChange }
                                         value={ this.state.city }   />
                                     <div className="help-block with-errors"></div>
@@ -153,9 +139,10 @@ class CreateChapter extends Component {
                                 </div>   
                                 <div className="col-md-6">
                                     <div className="form-group">
-                                        <label htmlFor="form_issn">ISSN</label>
+                                        <label htmlFor="form_issn">ISSN *</label>
                                         <input id="form_issn" type="text" name="issn" 
                                         className='form-control'
+                                        required="required" data-error="ISSN is required."
                                         onChange={ this.handleInputChange }
                                         value={ this.state.issn }   />
                                     <div className="help-block with-errors"></div>
@@ -166,9 +153,10 @@ class CreateChapter extends Component {
                             <div className="row">
                                 <div className="col-md-6">
                                     <div className="form-group">
-                                        <label htmlFor="form_doi">DOI</label>
+                                        <label htmlFor="form_doi">DOI *</label>
                                         <input id="form_doi" type="text" name="doi" 
                                         className='form-control'
+                                        required="required" data-error="DOI is required."
                                         onChange={ this.handleInputChange }
                                         value={ this.state.doi }   />
                                     <div className="help-block with-errors"></div>
@@ -176,9 +164,10 @@ class CreateChapter extends Component {
                                 </div>   
                                 <div className="col-md-6">
                                     <div className="form-group">
-                                        <label htmlFor="form_url">URL</label>
+                                        <label htmlFor="form_url">URL *</label>
                                         <input id="form_url" type="text" name="url" 
                                         className='form-control'
+                                        required="required" data-error="URL is required."
                                         onChange={ this.handleInputChange }
                                         value={ this.state.url}   />
                                     <div className="help-block with-errors"></div>
@@ -227,4 +216,4 @@ class CreateChapter extends Component {
 }
 
 
-export default CreateChapter;
+export default CreateBook;

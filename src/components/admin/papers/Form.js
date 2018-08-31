@@ -2,62 +2,119 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import cfg from '../../config/cfg';
 
-class CreateConference extends Component {
-    constructor() {
+class Form extends Component {
+    constructor(props) {
    
-        super();
+        super(props);
         this.state = {
-            title:'',
-            authors:'',
-            conference: '',
-            volume: '',
-            year: '',
-            publisher: '',  
-            pages: '',                  
-            issn: '',
-            doi: '',
-            url:'',    
-            abstract:'',
-            keywords:'',            
+            action: this.props.params.action,
+            action_name: '',
+            id: this.props.params.id,
+            formValues:{
+                title:'',
+                authors:'',
+                journal: '',
+                volume: '',
+                issue: '',
+                year: '',
+                publisher: '',  
+                pages: '',                  
+                issn: '',
+                doi: '',
+                url:'',    
+                abstract:'',
+                keywords:'',
+            }          
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-      }
+    }
+
+    componentDidMount() {
+        if(this.state.action === 'update'){
+            this.setState({action_name:'Update'})
+            this.getItem();
+        }
+        else{
+            this.setState({action_name:'Create'})
+        }
+    }
+
+    getItem(){
+        axios.get(cfg.baseURL+'api/paper/'+this.state.id)
+        .then((response) => {
+            let formValues = this.state.formValues;
+            formValues.title = response.data.title;
+            formValues.journal = response.data.journal;
+            formValues.authors = response.data.authors;
+            formValues.volume = response.data.volume,
+            formValues.issue = response.data.issue,
+            formValues.year = response.data.year;
+            formValues.publisher = response.data.publisher;  
+            formValues.pages = response.data.pages;                 
+            formValues.issn = response.data.issn;
+            formValues.doi = response.data.doi;
+            formValues.url = response.data.url;    
+            formValues.abstract = response.data.abstract;
+            formValues.keywords = response.data.keywords;
+            this.setState({formValues});
+        })
+        .catch((error)  => {
+              console.log(error);
+        }) 
+    }
+
+    updateItem(data, id){
+        axios.put(cfg.baseURL+'api/paper/'+id, data)
+            .then(alert('Updated'))
+            .catch(err => {console.log(err)});
+    }
+
+    createItem(data){
+        axios.post(cfg.baseURL+'api/paper', data)
+            .then(alert('Created'))
+            .catch(err => {console.log(err)});
+    }
 
       handleInputChange(e) {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
+        e.preventDefault();
+        let formValues = this.state.formValues;
+        formValues[e.target.name] = e.target.value;
+        this.setState({formValues})
        } 
       
      handleSubmit(e) {
         e.preventDefault();
         const data = {
-            title: this.state.title,
-            authors: this.state.authors,
-            conference: this.state.conference,
-            volume: this.state.volume,
-            year: this.state.year,
-            publisher: this.state.publisher,  
-            pages: this.state.pages,                 
-            issn: this.state.issn,
-            doi: this.state.doi,
-            url:this.state.url,    
-            abstract:this.state.abstract,
-            keywords:this.state.keywords
-            }
+            title: this.state.formValues.title,
+            authors: this.state.formValues.authors,
+            journal: this.state.formValues.journal,
+            volume: this.state.formValues.volume,
+            issue: this.state.formValues.issue,
+            year: this.state.formValues.year,
+            publisher: this.state.formValues.publisher,  
+            pages: this.state.formValues.publisher,                 
+            issn: this.state.formValues.issn,
+            doi: this.state.formValues.doi,
+            url:this.state.formValues.url,    
+            abstract:this.state.formValues.abstract,
+            keywords:this.state.formValues.keywords
+        }
+
+        if(this.state.action === 'update'){
+            this.updateItem(data, this.state.id);
+        }
+
+        if(this.state.action === 'create'){
+            this.createItem(data);
+        }
         
-        axios.post(cfg.baseURL+'api/conf', data)
-            .catch(err => {console.log(err)});
        } 
     
      render() {
         return (
-                <div className='box-text'>
-                    <div className='container'>
-                        <h3 className='text-center'>ADD CONFERENCE PAPER</h3>
-                        <form id="contact-form" onSubmit={ this.handleSubmit }>
+            <form id="contact-form" onSubmit={ this.handleSubmit }>
 
                         <div className="messages"></div>
                     
@@ -68,9 +125,9 @@ class CreateConference extends Component {
                                         <label htmlFor="form_title">Title *</label>
                                         <input id="form_title" type="text" name="title" 
                                         className='form-control'
-                                        required="required" data-error="Authors are required."
+                                        required="required" data-error="Authors is required."
                                         onChange={ this.handleInputChange }
-                                        value={ this.state.title }   />
+                                        value={ this.state.formValues.title }   />
                                     <div className="help-block with-errors"></div>
                                     </div>
                                 </div>                                
@@ -83,35 +140,47 @@ class CreateConference extends Component {
                                         className='form-control'
                                         required="required" data-error="Authors are required."
                                         onChange={ this.handleInputChange }
-                                        value={ this.state.authors }   />
+                                        value={ this.state.formValues.authors }   />
                                     <div className="help-block with-errors"></div>
                                     </div>
                                 </div>                                
                             </div>
 
                             <div className="row">
-                                <div className="col-md-9">
+                                <div className="col-md-6">
                                     <div className="form-group">
-                                        <label htmlFor="form_conference">Conference *</label>
-                                        <input id="form_conference" type="text" name="conference" 
+                                        <label htmlFor="form_journal">Journal *</label>
+                                        <input id="form_journal" type="text" name="journal" 
                                         className='form-control'
-                                        required="required" data-error="Conference are required."
+                                        required="required" data-error="Journal are required."
                                         onChange={ this.handleInputChange }
-                                        value={ this.state.conference }/>
+                                        value={ this.state.formValues.journal }/>
                                     <div className="help-block with-errors"></div>
                                     </div>
                                 </div>                     
 
                                 <div className="col-md-3">
                                     <div className="form-group">
-                                        <label htmlFor="form_vol">Volume</label>
+                                        <label htmlFor="form_vol">Volume *</label>
                                         <input id="form_vol" type="text" name="volume" 
                                         className='form-control'
+                                        required="required" data-error="Vol. is required."
                                         onChange={ this.handleInputChange }
-                                        value={ this.state.volume }   />
+                                        value={ this.state.formValues.volume }   />
                                         <div className="help-block with-errors"></div>
                                     </div>
-                                </div>                 
+                                </div>       
+
+                                <div className="col-md-3">
+                                    <div className="form-group">
+                                        <label htmlFor="form_issue">Issue</label>
+                                        <input id="form_issue" type="text" name="issue" 
+                                        className='form-control'
+                                        onChange={ this.handleInputChange }
+                                        value={ this.state.formValues.issue }   />
+                                        <div className="help-block with-errors"></div>
+                                    </div>
+                                </div>           
                             </div>
 
                             <div className="row">
@@ -122,7 +191,7 @@ class CreateConference extends Component {
                                         className='form-control'
                                         required="required" data-error="Publisher is required."
                                         onChange={ this.handleInputChange }
-                                        value={ this.state.publisher }   />
+                                        value={ this.state.formValues.publisher }   />
                                     <div className="help-block with-errors"></div>
                                     </div>
                                 </div>   
@@ -133,7 +202,7 @@ class CreateConference extends Component {
                                         className='form-control'
                                         required="required" data-error="Year are required."
                                         onChange={ this.handleInputChange }
-                                        value={ this.state.year }/>
+                                        value={ this.state.formValues.year }/>
                                     <div className="help-block with-errors"></div>
                                     </div>
                                 </div>                       
@@ -144,7 +213,7 @@ class CreateConference extends Component {
                                         className='form-control'
                                         required="required" data-error="Pages are required."
                                         onChange={ this.handleInputChange }
-                                        value={ this.state.pages }   />
+                                        value={ this.state.formValues.pages }   />
                                     <div className="help-block with-errors"></div>
                                     </div>
                                 </div>                                          
@@ -157,7 +226,7 @@ class CreateConference extends Component {
                                         <input id="form_issn" type="text" name="issn" 
                                         className='form-control'
                                         onChange={ this.handleInputChange }
-                                        value={ this.state.issn }   />
+                                        value={ this.state.formValues.issn }   />
                                     <div className="help-block with-errors"></div>
                                     </div>
                                 </div>                             
@@ -167,7 +236,7 @@ class CreateConference extends Component {
                                         <input id="form_doi" type="text" name="doi" 
                                         className='form-control'
                                         onChange={ this.handleInputChange }
-                                        value={ this.state.doi }   />
+                                        value={ this.state.formValues.doi }   />
                                     <div className="help-block with-errors"></div>
                                     </div>
                                 </div>   
@@ -177,7 +246,7 @@ class CreateConference extends Component {
                                         <input id="form_url" type="text" name="url" 
                                         className='form-control'
                                         onChange={ this.handleInputChange }
-                                        value={ this.state.url}   />
+                                        value={ this.state.formValues.url}   />
                                     <div className="help-block with-errors"></div>
                                     </div>
                                 </div>                             
@@ -191,7 +260,7 @@ class CreateConference extends Component {
                                         className='form-control'
                                         required="required" data-error="Keywords is required."
                                         onChange={ this.handleInputChange }
-                                        value={ this.state.keywords }   />
+                                        value={ this.state.formValues.keywords }   />
                                     <div className="help-block with-errors"></div>
                                     </div>
                                 </div>                             
@@ -206,22 +275,19 @@ class CreateConference extends Component {
                                                 rows="4" required="required" 
                                                 data-error="Abstract is required."
                                                 onChange={ this.handleInputChange }
-                                                value={ this.state.abstract }></textarea>
+                                                value={ this.state.formValues.abstract }></textarea>
                                         <div className="help-block with-errors"></div>
                                     </div>
                                 </div>
-                                <div className="col-md-12">
-                                    <input type="submit" className="btn btn-success btn-send" value="Create"/>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                    <div className="col-md-12">
+                        <input type="submit" className="btn btn-success btn-send float-right" value={this.state.action_name}/>
                     </div>
                 </div>
-
+            </div>
+            </form>
         );
     }
 }
 
 
-export default CreateConference;
+export default Form;

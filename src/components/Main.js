@@ -8,13 +8,18 @@ import Resume from './shared/Resume';
 import Publications from './shared/Publications';
 
 import Questions from './admin/Questions';
-import CreateBook from './admin/books/CreateBook';
-import CreatePaper from './admin/papers/CreatePaper';
-import CreateConference from './admin/conferences/CreateConference';
+
 import CreateWork from './admin/work/CreateWork';
-import CreateChapter from './admin/chapters/CreateChapter';
 import CreateEducation from './admin/education/CreateEducation';
 import CreateOwner from './admin/owners/CreateOwner';
+import createBook from './admin/books/Create';
+import updateBook from './admin/books/Update';
+import createPaper from './admin/papers/Create';
+import updatePaper from './admin/papers/Update';
+import createChapter from './admin/chapters/Create';
+import updateChapter from './admin/chapters/Update';
+import createConference from './admin/conferences/Create';
+import updateConference from './admin/conferences/Update';
 
 class Main extends Component{ 
   render() { 
@@ -25,12 +30,18 @@ class Main extends Component{
         <Route exact path='/login' component={Login}></Route>
         <Route exact path='/resume' component={Resume}></Route>
         <Route exact path='/publications' component={Publications}></Route>
-              
+        
         <Route exact path='/admin/questions' component={Questions}></Route>
-        <Route exact path='/admin/books' component={CreateBook}></Route>
-        <Route exact path='/admin/chapters' component={CreateChapter}></Route>
-        <Route exact path='/admin/papers' component={CreatePaper}></Route>
-        <Route exact path='/admin/confs' component={CreateConference}></Route>
+
+        <Route exact path='/admin/book' component={createBook}></Route>
+        <Route exact path='/admin/book/:id' component={updateBook}></Route>
+        <Route exact path='/admin/paper' component={createPaper}></Route>
+        <Route exact path='/admin/paper/:id' component={updatePaper}></Route>
+        <Route exact path='/admin/chapter' component={createChapter}></Route>
+        <Route exact path='/admin/chapter/:id' component={updateChapter}></Route>
+        <Route exact path='/admin/conf' component={createConference}></Route>
+        <Route exact path='/admin/conf/:id' component={updateConference}></Route>
+
         <Route exact path='/admin/users' component={Questions}></Route>
         <Route exact path='/admin/edu' component={CreateEducation}></Route>
         <Route exact path='/admin/work' component={CreateWork}></Route>

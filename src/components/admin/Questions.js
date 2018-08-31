@@ -57,15 +57,14 @@ class Questions extends Component {
         };
       }
 
-      
-
       componentDidMount() {
         axios.get(cfg.baseURL+'api/question')
           .then(response => {
             this.setState({
               questions: response.data
-            });
-          });
+            })
+          })
+          .catch(err => {console.log(err)});
       }
     
      render() {

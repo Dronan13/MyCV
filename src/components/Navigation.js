@@ -21,7 +21,7 @@ class Navigation extends Component{
     const authLinks = (
       <ul className="navbar-nav ml-auto">
           <li className="nav-item">           
-            <NavLink className="nav-link pb-0" to="/me"><Gravatar email={user.email} size={30} default="retro" className="rounded-circle"/> {user.username}</NavLink>    
+            <NavLink className="nav-link pb-0" to="/me"><Gravatar email={user.email} size={30} default="retro" className="rounded-circle"/>{user.username}</NavLink>    
           </li>
           <li className="nav-item">
             <a className="nav-link text-danger" onClick={this.onLogout.bind(this)}>Logout</a>   
@@ -47,10 +47,10 @@ class Navigation extends Component{
           <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Publications</a>
             <div className="dropdown-menu" aria-labelledby="dropdown"> 
-              <NavLink exact className="dropdown-item" activeClassName="active" to='/admin/papers'>Papers</NavLink>
-              <NavLink exact className="dropdown-item" activeClassName="active" to='/admin/confs'>Conferences</NavLink>
-              <NavLink exact className="dropdown-item" activeClassName="active" to='/admin/books'>Books</NavLink>
-              <NavLink exact className="dropdown-item" activeClassName="active" to='/admin/books'>Book Chapter</NavLink>
+              <NavLink exact className="dropdown-item" activeClassName="active" to='/admin/paper'>Papers</NavLink>
+              <NavLink exact className="dropdown-item" activeClassName="active" to='/admin/conf'>Conferences</NavLink>
+              <NavLink exact className="dropdown-item" activeClassName="active" to='/admin/book'>Books</NavLink>
+              <NavLink exact className="dropdown-item" activeClassName="active" to='/admin/chapter'>Book Chapter</NavLink>
             </div>
           </li>
           <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/admin/edu'>Education</NavLink></li>

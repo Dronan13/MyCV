@@ -21,6 +21,8 @@ import updateChapter from './admin/chapters/Update';
 import createConference from './admin/conferences/Create';
 import updateConference from './admin/conferences/Update';
 
+import PrivateRoute from '../helpers/PrivateRoute';
+//<Route exact path='/resume' component={Resume}></Route>
 class Main extends Component{ 
   render() { 
     return (
@@ -28,6 +30,7 @@ class Main extends Component{
         <Route exact path='/' component={Home}></Route>       
         <Route exact path='/registration' component={Registration}></Route>
         <Route exact path='/login' component={Login}></Route>
+        
         <Route exact path='/resume' component={Resume}></Route>
         <Route exact path='/publications' component={Publications}></Route>
         

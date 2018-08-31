@@ -6,8 +6,6 @@ import { withRouter } from 'react-router-dom';
 import Gravatar from 'react-gravatar'
 import { logoutUser } from '../actions/authentication';
 
-
-
 class Navigation extends Component{ 
 
   onLogout(e) {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import jwt_decode from 'jwt-decode';
 
 import Home from './shared/Home';
 import Registration from './shared/Registration/Registration';
@@ -21,10 +22,16 @@ import updateChapter from './admin/chapters/Update';
 import createConference from './admin/conferences/Create';
 import updateConference from './admin/conferences/Update';
 
-import PrivateRoute from '../helpers/PrivateRoute';
+import AdminRoute from '../helpers/AdminRouter';
+
 //<Route exact path='/resume' component={Resume}></Route>
 class Main extends Component{ 
   render() { 
+    let decoded ='';
+    if(localStorage.jwtToken){
+      decoded = jwt_decode(localStorage.jwtToken);
+    }
+
     return (
       <Switch>
         <Route exact path='/' component={Home}></Route>       
@@ -32,23 +39,24 @@ class Main extends Component{
         <Route exact path='/login' component={Login}></Route>
         
         <Route exact path='/resume' component={Resume}></Route>
+
         <Route exact path='/publications' component={Publications}></Route>
         
         <Route exact path='/admin/questions' component={Questions}></Route>
 
-        <Route exact path='/admin/book' component={createBook}></Route>
-        <Route exact path='/admin/book/:id' component={updateBook}></Route>
-        <Route exact path='/admin/paper' component={createPaper}></Route>
-        <Route exact path='/admin/paper/:id' component={updatePaper}></Route>
-        <Route exact path='/admin/chapter' component={createChapter}></Route>
-        <Route exact path='/admin/chapter/:id' component={updateChapter}></Route>
-        <Route exact path='/admin/conf' component={createConference}></Route>
-        <Route exact path='/admin/conf/:id' component={updateConference}></Route>
+        <AdminRoute exact path='/admin/book' component={createBook} authed={decoded}></AdminRoute>
+        <AdminRoute exact path='/admin/book/:id' component={updateBook} authed={decoded}></AdminRoute>
+        <AdminRoute exact path='/admin/paper' component={createPaper} authed={decoded}></AdminRoute>
+        <AdminRoute exact path='/admin/paper/:id' component={updatePaper} authed={decoded}></AdminRoute>
+        <AdminRoute exact path='/admin/chapter' component={createChapter} authed={decoded}></AdminRoute>
+        <AdminRoute exact path='/admin/chapter/:id' component={updateChapter} authed={decoded}></AdminRoute>
+        <AdminRoute exact path='/admin/conf' component={createConference} authed={decoded}></AdminRoute>
+        <AdminRoute exact path='/admin/conf/:id' component={updateConference} authed={decoded}></AdminRoute>
 
-        <Route exact path='/admin/users' component={Questions}></Route>
-        <Route exact path='/admin/edu' component={CreateEducation}></Route>
-        <Route exact path='/admin/work' component={CreateWork}></Route>
-        <Route exact path='/admin/owner' component={CreateOwner}></Route>
+        <AdminRoute exact path='/admin/users' component={Questions} authed={decoded}></AdminRoute>
+        <AdminRoute exact path='/admin/edu' component={CreateEducation} authed={decoded}></AdminRoute>
+        <AdminRoute exact path='/admin/work' component={CreateWork} authed={decoded}></AdminRoute>
+        <AdminRoute exact path='/admin/owner' component={CreateOwner} authed={decoded}></AdminRoute>
       </Switch>
     )}
 }
@@ -68,4 +76,5 @@ import Conferences from './shared/Publications/Conferences';
         <Route exact path='/owner' component={Header}></Route>
         <Route exact path='/me' component={Home}></Route>
 */
+
 export default Main;

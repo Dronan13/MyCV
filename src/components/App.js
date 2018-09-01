@@ -7,7 +7,6 @@ import setAuthToken from '../helpers/setAuthToken';
 import setAuthUser from '../helpers/setAuthUser';
 import { setCurrentUser, logoutUser } from '../actions/authentication';
 
-
 import Navigation from './Navigation'
 import Main from './Main'
 import RegistrationModal from './shared/Registration/RegistrationModal';

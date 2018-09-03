@@ -7,7 +7,13 @@ let JobSchema = new mongoose.Schema(
         date_end: String,
         country: String,
         city: String,
-        description:String
+        description:String,
+        created_at: {
+            type: Date,
+            default: Date.now
+        },
+        updated_at:Date,
+        deleted_at:Date,
     }
 );
 

@@ -15,7 +15,7 @@ async function create(data) {
  
 async function getAll() {
     var sort = { _id: -1 };
-    return await Edu.find().sort(sort);;
+    return await Edu.find({ 'deleted_at': null }).sort(sort);;
 }
  
 async function getById(id) {
@@ -25,10 +25,14 @@ async function getById(id) {
 async function update(id, data) {
     const edu = await Edu.findById(id); 
     if (!edu) throw 'Education not found';
+    data.updated_at = Date.now();
     Object.assign(edu, data);
     await edu.save();
 }
 
 async function _delete(id) {
-    await Edu.findByIdAndRemove(id);
+    const data = await Edu.findById(id); 
+    if (!data) throw 'Conference not found';
+    data.deleted_at = Date.now();
+    await data.save();
 }

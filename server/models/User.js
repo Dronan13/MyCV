@@ -21,10 +21,12 @@ UserSchema = new mongoose.Schema(
             type: String,
             default: 'user',
           },
-        createdDate: {
+        created_at: {
             type: Date,
             default: Date.now
-        }
+        },
+        updated_at:Date,
+        deleted_at:Date,
     }
 );
 

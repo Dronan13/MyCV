@@ -14,7 +14,7 @@ async function create(data) {
 }
  
 async function getAll() {
-    return await Book.find();
+    return await Book.find({ 'deleted_at': null });
 }
  
 async function getById(id) {
@@ -24,10 +24,14 @@ async function getById(id) {
 async function update(id, data) {
     const book = await Book.findById(id); 
     if (!book) throw 'Book not found';
+    data.updated_at = Date.now();
     Object.assign(book, data);
     await book.save();
 }
 
 async function _delete(id) {
-    await Book.findByIdAndRemove(id);
+    const data = await Book.findById(id); 
+    if (!data) throw 'Conference not found';
+    data.deleted_at = Date.now();
+    await data.save();
 }

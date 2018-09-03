@@ -20,16 +20,16 @@ QuestionSchema = new mongoose.Schema(
             type: String,
             required: true
           },
-        
         status: {
             type: String,
             default: 'pending'
           },
-          
-        createdDate: {
+        created_at: {
             type: Date,
             default: Date.now
-        }
+        },
+        updated_at:Date,
+        deleted_at:Date,
     }
 );
 

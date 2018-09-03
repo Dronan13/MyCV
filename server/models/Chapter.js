@@ -14,6 +14,12 @@ let ChapterSchema = new mongoose.Schema(
         file_url:String,
         abstract:String,
         keywords:String,
+        created_at: {
+            type: Date,
+            default: Date.now
+        },
+        updated_at:Date,
+        deleted_at:Date,
     }
 );
 

@@ -18,7 +18,13 @@ let OwnerSchema = new mongoose.Schema(
         github_url: String,
         facebook_url: String,
         twitter_url: String,
-        skills: String
+        skills: String,
+        created_at: {
+            type: Date,
+            default: Date.now
+        },
+        updated_at:Date,
+        deleted_at:Date,
     }
 );
 

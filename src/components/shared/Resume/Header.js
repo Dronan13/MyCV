@@ -30,10 +30,10 @@ class Header extends Component {
 
     componentDidMount() 
     {
-        this.getItems();
+        this.getItem();
     }
 
-    getItems() {
+    getItem() {
         axios.get(cfg.baseURL+'api/owner/'+cfg.owner)
           .then(response => {
             this.setState({

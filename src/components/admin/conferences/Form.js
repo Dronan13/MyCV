@@ -100,9 +100,7 @@ class Form extends Component {
 
         if(this.state.action === 'update'){
             this.updateItem(data, this.state.id);
-        }
-
-        if(this.state.action === 'create'){
+        }else{
             this.createItem(data);
         }
         

@@ -14,7 +14,8 @@ const eductrl = require('../controllers/education.ctrl');
 const workctrl = require('../controllers/work.ctrl');
 const questionctrl = require('../controllers/question.ctrl');
 const ownerctrl = require('../controllers/owner.ctrl');
-
+const languagectrl = require('../controllers/language.ctrl');
+const skillctrl = require('../controllers/skill.ctrl');
 const requireAdmin = require('../_helpers/validation/is-admin');
 
 module.exports = (router) => {
@@ -75,4 +76,15 @@ module.exports = (router) => {
     router.put('/owner/:id', requireAdmin, ownerctrl.update);
     router.delete('/owner/:id', requireAdmin, ownerctrl.delete);
 
+    router.post('/language', requireAdmin, languagectrl.create);
+    router.get('/language', languagectrl.getAll);//
+    router.get('/language/:id', languagectrl.getById);
+    router.put('/language/:id', requireAdmin, languagectrl.update);
+    router.delete('/language/:id', requireAdmin, languagectrl.delete);
+
+    router.post('/skill', requireAdmin, skillctrl.create);
+    router.get('/skill', skillctrl.getAll);//
+    router.get('/skill/:id', skillctrl.getById);
+    router.put('/skill/:id', requireAdmin, skillctrl.update);
+    router.delete('/skill/:id', requireAdmin, skillctrl.delete);
 }

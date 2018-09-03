@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './Resume/Header';
 import Work from './Resume/Work';
 import Education from './Resume/Education';
+import Language from './Resume/Language';
 
 class Resume extends Component {
     render() {
@@ -14,6 +15,8 @@ class Resume extends Component {
                     <Work/>
                     <br/>
                     <Education/>
+                    <br/>
+                    <Language/>
                 </div>                                     
             </div>
         );

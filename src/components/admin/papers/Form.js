@@ -48,8 +48,8 @@ class Form extends Component {
             formValues.title = response.data.title;
             formValues.journal = response.data.journal;
             formValues.authors = response.data.authors;
-            formValues.volume = response.data.volume,
-            formValues.issue = response.data.issue,
+            formValues.volume = response.data.volume;
+            formValues.issue = response.data.issue;
             formValues.year = response.data.year;
             formValues.publisher = response.data.publisher;  
             formValues.pages = response.data.pages;                 

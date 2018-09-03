@@ -51,8 +51,15 @@ class Navigation extends Component{
               <NavLink exact className="dropdown-item" activeClassName="active" to='/admin/chapter'>Book Chapter</NavLink>
             </div>
           </li>
-          <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/admin/edu'>Education</NavLink></li>
-          <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to='/admin/work'>Experience</NavLink></li>
+          <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Resume</a>
+            <div className="dropdown-menu" aria-labelledby="dropdown"> 
+              <NavLink exact className="dropdown-item" activeClassName="active" to='/admin/edu'>Education</NavLink>
+              <NavLink exact className="dropdown-item" activeClassName="active" to='/admin/work'>Experience</NavLink>
+              <NavLink exact className="dropdown-item" activeClassName="active" to='/admin/language'>Language</NavLink>
+              <NavLink exact className="dropdown-item" activeClassName="active" to='/admin/owner'>Owner</NavLink> 
+            </div>
+          </li>
       </ul>
     )
 

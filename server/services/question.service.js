@@ -1,5 +1,6 @@
 const Question = require('../models/Question')
 const validateQuestion = require('../_helpers/validation/question');
+const sendEmail = require('../_helpers/mailer');
 module.exports = {
     create,
     getAll,  
@@ -15,9 +16,9 @@ async function create(questionParam) {
     if(!isValid) {
         return errors;
     }
-    
     const question = new Question(questionParam);
     await question.save();
+    sendEmail(question);
 }
  
 async function getAll() {

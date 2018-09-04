@@ -8,6 +8,7 @@ const isAdmin2 = (value) => {
         value.permissions != 'admin'
     );
 }
+
 function isAdmin(value) {
     value = JSON.parse(value)
     return (

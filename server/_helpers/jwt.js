@@ -12,9 +12,6 @@ function jwt() {
             'api/login',
             'api/register',
             'api/question',
-            //'api/work',
-           // 'api/owner',
-
         ]
     })
     
